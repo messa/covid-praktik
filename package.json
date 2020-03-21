@@ -21,6 +21,7 @@
   "homepage": "https://github.com/messa/vybaveni#readme",
   "dependencies": {
     "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
     "mongoose": "^5.9.5",
     "nanoid": "^2.1.11",
     "next": "^9.3.1",

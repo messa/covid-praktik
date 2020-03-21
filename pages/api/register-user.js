@@ -1,4 +1,4 @@
-import { registerUser } from '../../lib/model'
+import { registerUser } from '../../lib/model/users'
 
 export default async function (req, res) {
   const [ err, user ] =await registerUser({

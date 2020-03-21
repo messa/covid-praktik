@@ -42,7 +42,7 @@ function RegistrationForm() {
 
       <input
         type='text'
-        name='email'
+        name='emailAddress'
         placeholder='E-mail'
         value={emailAddress}
         onChange={e => setEmailAddress(e.target.value)}
