@@ -1,16 +1,16 @@
 import Link from 'next/link'
 
 function Login() {
-    return (
-      <div>
-        <h1>Přihlášení</h1>
+  return (
+    <div>
+      <h1>Přihlášení</h1>
 
-        TODO: přihlačovací formulář
+      TODO: přihlačovací formulář
 
-        <p><Link href='/dashboard'><a>Po přihlášení se člověk dostane na tuto stránku</a></Link></p>
+      <p><Link href='/dashboard'><a>Po přihlášení se člověk dostane na tuto stránku</a></Link></p>
 
-      </div>
-    )
-  }
+    </div>
+  )
+}
 
-  export default Login
+export default Login

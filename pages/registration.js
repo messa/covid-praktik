@@ -1,12 +1,12 @@
 function RegistrationPage() {
-    return (
-      <div>
-        <h1>Registrace</h1>
+  return (
+    <div>
+      <h1>Registrace</h1>
 
-        TODO: registrační formulář
+      TODO: registrační formulář
 
-      </div>
-    )
-  }
+    </div>
+  )
+}
 
-  export default RegistrationPage
+export default RegistrationPage
