@@ -7,7 +7,7 @@ function Login() {
 
         TODO: přihlačovací formulář
 
-        <p><Limk><a href='/dashboard'>Po přihlášení se člověk dostane na tuto stránku</a></Limk></p>
+        <p><Link href='/dashboard'><a>Po přihlášení se člověk dostane na tuto stránku</a></Link></p>
 
       </div>
     )
