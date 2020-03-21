@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function RegistrationForm() {
+  const [ email, setEmail ] = useState('')
+  const [ officeName, setOfficeName ] = useState('')
+
   return (
-    <form>
+    <form onSubmit={}>
 
-      <input placeholder='E-mail' />
+      <input
+        type='text'
+        name='email'
+        placeholder='E-mail'
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        />
 
-      <input placeholder='Office name' />
+      <input
+        type='text'
+        name='officeName'
+        placeholder='Office name'
+        value={officeName}
+        onChange={e => setOfficeName(e.target.value)}
+        />
 
       <input type='submit' />
 
