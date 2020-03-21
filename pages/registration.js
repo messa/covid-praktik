@@ -1,4 +1,5 @@
 import React from 'react'
+import RegistrationForm from '../components/RegistrationForm'
 
 function RegistrationPage() {
   return (
@@ -6,6 +7,8 @@ function RegistrationPage() {
       <h1>Registrace</h1>
 
       TODO: registrační formulář
+
+      <RegistrationForm />
 
     </div>
   )
