@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 function Login() {
     const [formVisible, setFormVisible] = useState(false);
+    const [newEqVisible, setNewEqVisible] = useState(false);
     const equipments = ['ffp3', 'ffp2', 'ochr. obleky', 'brýle/štíty'];
     const historyData = [
         {
@@ -31,21 +32,37 @@ function Login() {
 
             <div>
                 <h3 onClick={() => setFormVisible(isVisible => !isVisible)} style={{cursor: 'pointer'}}>
-                    Zadat aktuální data
+                    Zaznamenat změnu stavů
                 </h3>
                 {formVisible && (
                     <form>
                         <fieldset>
-                            <legend>Počty vybavení</legend>
+                            <legend>Spotřebované</legend>
                             {equipments.map(name => (
                                 <div key={name}>
-                                    <p>{name}</p>
+                                    {name}
                                     <input type="text" placeholder={'celkem'}/>
-                                    <input type="text" placeholder={'od státu'}/>
                                 </div>
                             ))}
-                            <button>Aktualizovat data</button>
                         </fieldset>
+                        <button
+                            style={{display: newEqVisible ? 'none' : 'block'}}
+                            onClick={() => setNewEqVisible(isVisible => !isVisible)}
+                            type={'button'}
+                        >Přišlo nové vybavení</button>
+                        {newEqVisible && (
+                            <fieldset>
+                                <legend>Nové</legend>
+                                {equipments.map(name => (
+                                    <div key={name}>
+                                        <p>{name}</p>
+                                        <input type="text" placeholder={'celkem'}/>
+                                        <input type="text" placeholder={'od státu'}/>
+                                    </div>
+                                ))}
+                            </fieldset>
+                        )}
+                        <button>Aktualizovat data</button>
                     </form>
                 )}
             </div>
