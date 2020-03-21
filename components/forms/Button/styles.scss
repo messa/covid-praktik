@@ -1,0 +1,29 @@
+@import "~Sass/_helpers.scss";
+
+.button {
+    background-color: #526d61;
+    border: 2px solid #526d61;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 28px;
+    min-width: 210px;
+    padding: 10px 20px;
+    position: relative;
+    text-transform: uppercase;
+
+    &:disabled {
+        cursor: default;
+        opacity: .5;
+    }
+
+    a {
+        color: white;
+        display: block;
+        margin: -10px -20px;
+        padding: 10px 20px;
+        text-decoration: none;
+    }
+}

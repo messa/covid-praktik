@@ -1,4 +1,4 @@
-@import "~Sass/helpers.scss";
+@import "~Sass/_helpers.scss";
 
 * {
     box-sizing: border-box;
@@ -15,6 +15,4 @@ body {
     color: $black;
     font-family: $font-family-hind;
     margin: 0;
-    padding: $padding--big;
-}
 }
