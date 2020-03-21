@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { foobar } from '../lib/model'
 
 function IndexPage({ foo }) {
   return (
@@ -18,10 +19,9 @@ function IndexPage({ foo }) {
 }
 
 export async function getServerSideProps(context) {
-  const model = require('../lib/model')
   return {
     props: { // will be passed to the page component as props
-      foo: await model.foobar()
+      foo: await foobar()
     }
   }
 }
