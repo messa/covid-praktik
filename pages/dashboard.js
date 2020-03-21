@@ -1,7 +1,15 @@
 import {useState} from 'react';
 import Link from 'next/link';
+import { getSession, getUserById, getOfficeById } from '../lib/model'
 
-function Login() {
+function Dashboard({ notLoggedIn, user, office }) {
+    if (notLoggedIn) {
+      return (
+        <div>
+          <p>Prosím, <Link href='/'><a>přihlašte se</a></Link>.</p>
+        </div>
+      )
+    }
     const [formVisible, setFormVisible] = useState(false);
     const [newEqVisible, setNewEqVisible] = useState(false);
     const equipments = ['ffp3', 'ffp2', 'ochr. obleky', 'brýle/štíty'];
@@ -68,8 +76,8 @@ function Login() {
             </div>
 
             <h2>Ordinace</h2>
-            <p>$name</p>
-            <p>$address</p>
+
+            <p>{office.name}</p>
 
             <h2>Personál</h2>
             <p>Celkem: $count</p>
@@ -103,4 +111,29 @@ function Login() {
     );
 }
 
-export default Login;
+export async function getServerSideProps({ req, res }) {
+  const session = await getSession(req, res)
+  const user = await getUserById(session.get('userId'))
+  if (!user) {
+    return {
+      props: {
+        notLoggedIn: true,
+      }
+    }
+  }
+  const office = await getOfficeById(user.officeId)
+  return {
+    props: {
+      user: {
+        id: user._id,
+        emailAddress: user.emailAddress,
+      },
+      office: {
+        id: office._id,
+        name: office.name,
+      }
+    }
+  }
+}
+
+export default Dashboard;
