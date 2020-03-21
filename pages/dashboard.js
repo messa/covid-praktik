@@ -36,6 +36,9 @@ function Dashboard({ notLoggedIn, user, office }) {
 
     return (
         <div>
+
+            <p style={{ textAlign: 'right' }}>Přihlášený uživatel: {user.emailAddress}</p>
+
             <h1>Evidence vybavení ordinací</h1>
 
             <div>
