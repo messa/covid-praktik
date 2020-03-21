@@ -4,8 +4,10 @@ function RegistrationForm() {
   const [ email, setEmail ] = useState('')
   const [ officeName, setOfficeName ] = useState('')
 
+  const handleSubmit = () => {}
+
   return (
-    <form onSubmit={}>
+    <form onSubmit={handleSubmit}>
 
       <input
         type='text'
