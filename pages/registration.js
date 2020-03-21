@@ -1,12 +1,19 @@
 function RegistrationPage() {
     return (
-      <div>
-        <h1>Registrace</h1>
+        <div>
+            <h1>Registrace</h1>
 
-        TODO: registrační formulář
+            <form action={'/dashboard'}>
+                <input type="text" placeholder={'email'}/>
+                <input type="text" placeholder={'nazev ordinace'}/>
+                <input type="text" placeholder={'heslo'}/>
+                <input type="text" placeholder={'heslo znovu'}/>
 
-      </div>
-    )
-  }
+                <button type={'submit'}>Registrovat</button>
+            </form>
 
-  export default RegistrationPage
+        </div>
+    );
+}
+
+export default RegistrationPage;
