@@ -20,12 +20,15 @@ function RegistrationForm() {
       <input
         type='text'
         name='officeName'
-        placeholder='Office name'
+        placeholder='Název ordinace'
         value={officeName}
         onChange={e => setOfficeName(e.target.value)}
         />
 
-      <input type='submit' />
+      <input
+        type='submit'
+        value='Registrovat'
+        />
 
     </form>
   )
