@@ -26,6 +26,16 @@ function RegistrationForm() {
         />
 
       <input
+        type='password'
+        placeholder='Heslo'
+        />
+
+      <input
+        type='password'
+        placeholder='Heslo znovu'
+        />
+
+      <input
         type='submit'
         value='Registrovat'
         />
