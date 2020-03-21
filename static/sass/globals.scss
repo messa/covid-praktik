@@ -1,0 +1,20 @@
+@import "~Sass/helpers.scss";
+
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+a {
+    color: $regent-gray;
+    font-weight: 700;
+    text-decoration: none;
+}
+body {
+    color: $black;
+    font-family: $font-family-hind;
+    margin: 0;
+    padding: $padding--big;
+}
+}
