@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import RegistrationForm from '../components/RegistrationForm';
 
 function RegistrationPage() {
     return (
@@ -14,6 +15,7 @@ function RegistrationPage() {
                 <button type={'submit'}>Registrovat</button>
             </form>
 
+            <RegistrationForm/>
         </div>
     );
 }
