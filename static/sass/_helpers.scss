@@ -1,6 +1,7 @@
 /* colors from: http://chir.ag/projects/name-that-color/ */
 $alto: #d8d8d8;
 $black: #000;
+$como: #526d61;
 $gallery: #efefef;
 $gray-chateau: #a9aeb4;
 $iron: #c9ced3;
@@ -16,12 +17,14 @@ $white: #fff;
 
 /* fonts */
 $font-size: 16px;
-$font-size-sm: 14px;
+$font-size-small: 14px;
+$font-size-tiny: 12px;
 $font-size-lg: 22px;
 $font-family-hind: 'Hind', sans-serif;
 
 /* grid */
-$wrapper-width: 700px;
+$wrapper-width: 1000px;
+$wrapper-condensed-width: 500px;
 $margin--default: 1em;
 $padding--default: 1em;
 $padding--big: 2em;

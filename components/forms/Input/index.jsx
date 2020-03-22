@@ -9,6 +9,7 @@ import styles from './styles.scss';
 
 export default function Input(
     {
+        children,
         errorMessage = '',
         hasError = false,
         id = generateID(),
@@ -30,6 +31,7 @@ export default function Input(
                 [styles.container]: type !== 'hidden',
             })}>
                 <input id={id} name={name} onChange={onChange} onBlur={onBlur} type={type} value={value} {...rest}/>
+                {children}
             </div>
             {errorMessage && <Error show={hasError} text={errorMessage}/>}
         </div>

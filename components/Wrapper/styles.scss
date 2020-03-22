@@ -2,7 +2,12 @@
 
 .wrapper {
     margin: 40px auto;
+    max-width: $wrapper-width;
     padding: 0 20px;
+
+    &.condensed {
+        max-width: $wrapper-condensed-width;
+    }
 
     @include media(tablet) {
         margin-bottom: 60px;

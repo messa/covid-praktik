@@ -14,7 +14,7 @@ function IndexPage() {
     const {query: {flag}} = useRouter();
 
     return (
-        <Wrapper>
+        <Wrapper condensed>
             {flag === FLAGS.registrationSuccessful && (
                 <Message success>
                     <p>Registrace proběhla úspěšně. Můžete se přihlásit do systému</p>
