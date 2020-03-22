@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getSession, getUserById, getOfficeById} from '../lib/model';
+import {getSession, getUserById, getOfficeById, getLastStaffState} from '../lib/model';
 
 import Container from 'Components/Container';
 import NotLoggedIn from 'Components/dashboard/NotLoggedIn';
@@ -11,7 +11,7 @@ import Wrapper from 'Components/Wrapper';
 
 import 'Sass/globals.scss';
 
-function Dashboard({notLoggedIn, user, office}) {
+function Dashboard({notLoggedIn, user, office, staffState}) {
     if (notLoggedIn) {
         return <NotLoggedIn/>;
     }
@@ -26,7 +26,7 @@ function Dashboard({notLoggedIn, user, office}) {
                 <h1>{officeName}</h1>
             </Wrapper>
             <Wrapper>
-                <OfficeInfo/>
+                <OfficeInfo staffState={staffState} />
             </Wrapper>
             <Wrapper>
                 <SupplyHistory/>
@@ -46,6 +46,7 @@ export async function getServerSideProps({req, res}) {
         };
     }
     const office = await getOfficeById(user.officeId);
+    const staffState = await getLastStaffState(user.officeId)
     return {
         props: {
             user: {
@@ -56,6 +57,14 @@ export async function getServerSideProps({req, res}) {
             office: {
                 id: office._id,
                 name: office.name,
+            },
+            staffState: {
+                doctorTotalCount: staffState.doctorTotalCount,
+                doctorQuarantinedCount: staffState.doctorQuarantinedCount,
+                doctorSickCount: staffState.doctorSickCount,
+                nurseTotalCount: staffState.nurseTotalCount,
+                nurseQuarantinedCount: staffState.nurseQuarantinedCount,
+                nurseSickCount: staffState.nurseSickCount,
             },
         },
     };
