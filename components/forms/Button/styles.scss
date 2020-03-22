@@ -1,15 +1,14 @@
 @import "~Sass/_helpers.scss";
 
 .button {
-    background-color: #526d61;
-    border: 2px solid #526d61;
-    color: white;
+    background-color: $como;
+    color: $white;
     cursor: pointer;
     display: inline-block;
-    font-size: 16px;
+    font-size: $font-size;
     font-weight: 700;
-    line-height: 28px;
-    min-width: 210px;
+    line-height: 1.75;
+    min-width: 200px;
     padding: 10px 20px;
     position: relative;
     text-transform: uppercase;
@@ -17,6 +16,11 @@
     &:disabled {
         cursor: default;
         opacity: .5;
+    }
+    &.small {
+        font-size: $font-size-tiny;
+        min-width: auto;
+        padding: 5px 10px;
     }
 
     a {

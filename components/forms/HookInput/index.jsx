@@ -15,7 +15,10 @@ export default function HookInput(
         <Input
             hasError={errors[name]}
             onBlur={({target: {value}}) => handleValidate(name, value)}
-            onChange={({target: {value}}) => handleChange(name, value)}
+            onChange={({target}) => {
+                const {type, value} = target;
+                handleChange(name, type === 'checkbox' ? target.checked : value);
+            }}
             value={values[name]}
             id={name}
             {...rest}

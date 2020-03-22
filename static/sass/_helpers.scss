@@ -1,26 +1,30 @@
 /* colors from: http://chir.ag/projects/name-that-color/ */
 $alto: #d8d8d8;
 $black: #000;
+$como: #526d61;
 $gallery: #efefef;
 $gray-chateau: #a9aeb4;
 $iron: #c9ced3;
 $limed-spruce: #323c46;
-$wild-strawberry: #ff4081;
 $mischka: #d9dce1;
 $mountain-meadow: #22d486;
+$picton-blue: #2caae4;
 $regent-gray: #949ea8;
 $silver: #ccc;
 $tundora: #4d4d4d;
+$wild-strawberry: #ff4081;
 $white: #fff;
 
 /* fonts */
 $font-size: 16px;
-$font-size-sm: 14px;
+$font-size-small: 14px;
+$font-size-tiny: 12px;
 $font-size-lg: 22px;
 $font-family-hind: 'Hind', sans-serif;
 
 /* grid */
-$wrapper-width: 700px;
+$wrapper-width: 1000px;
+$wrapper-condensed-width: 500px;
 $margin--default: 1em;
 $padding--default: 1em;
 $padding--big: 2em;

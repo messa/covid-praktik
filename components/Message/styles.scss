@@ -1,0 +1,25 @@
+@import '~Sass/_helpers.scss';
+
+.icon {
+    @include square(30px);
+    fill: $picton-blue;
+    left: 0;
+    position: absolute;
+    top: 0;
+
+    .succcess & {
+        fill: $mountain-meadow;
+    }
+    .error & {
+        fill: $wild-strawberry;
+    }
+}
+.wrapper {
+    margin-bottom: $margin--default;
+    padding: 5px 0 5px 40px;
+    position: relative;
+
+    p {
+        margin-top: 0;
+    }
+}

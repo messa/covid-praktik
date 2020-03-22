@@ -28,6 +28,11 @@ $height: 40px;
         padding: 0 10px;
         width: 100%;
 
+        &[type=checkbox] {
+            @include square(auto);
+            margin-right: 10px;
+            vertical-align: text-top;
+        }
         &:focus {
             border-color: $tundora;
         }

@@ -28,10 +28,12 @@
     "nanoid": "^2.1.11",
     "next": "^9.3.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
     "@zeit/next-sass": "^1.0.1",
-    "node-sass": "^4.13.1"
+    "node-sass": "^4.13.1",
+    "react-svg-loader": "^3.0.3"
   }
 }

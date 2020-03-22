@@ -1,0 +1,8 @@
+@import '~Sass/_helpers.scss';
+
+.wrapper {
+    @include media(tablet) {
+        float: right;
+        margin-left: 50px;
+    }
+}
