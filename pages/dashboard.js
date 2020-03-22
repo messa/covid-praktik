@@ -58,7 +58,7 @@ export async function getServerSideProps({req, res}) {
                 id: office._id,
                 name: office.name,
             },
-            staffState: {
+            staffState: !staffState ? null : {
                 doctorTotalCount: staffState.doctorTotalCount,
                 doctorQuarantinedCount: staffState.doctorQuarantinedCount,
                 doctorSickCount: staffState.doctorSickCount,
