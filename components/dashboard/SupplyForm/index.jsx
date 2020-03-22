@@ -39,7 +39,6 @@ export default function SupplyForm({modalController}) {
         const {values} = formHook;
 
         try {
-            //await axios.post('/api/', values);
             await fetch('post', values);
         } catch (e) {
             console.error(e);
@@ -86,7 +85,7 @@ export default function SupplyForm({modalController}) {
                 </div>
             )}
             <p>
-                <Button type={'submit'}>Aktualizovat data</Button>
+                <Button busy={loading} type={'submit'}>Aktualizovat data</Button>
             </p>
         </Form>
     )
