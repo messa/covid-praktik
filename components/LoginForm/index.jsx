@@ -1,13 +1,14 @@
 import React from 'react';
-import axios from 'axios';
 import {useRouter} from 'next/router';
 
+import Button from 'Components/forms/Button';
 import Form from 'Components/forms/Form';
 import HookInput from 'Components/forms/HookInput';
-import Button from 'Components/forms/Button';
+import Message from 'Components/Message';
 
-import useForm from 'Hooks/useForm';
 import {isEmailValid, isFilled} from 'Helpers/validations';
+import useFetch from 'Hooks/useFetch';
+import useForm from 'Hooks/useForm';
 
 function LoginForm() {
     const formHook = useForm({
@@ -18,16 +19,22 @@ function LoginForm() {
         password: val => isFilled(val),
     });
     const router = useRouter();
+    const {fetch, state: {done, error, loading}} = useFetch('/api/login-user');
+
+    if (done && !error) {
+        router.push('/dashboard');
+
+        return null;
+    }
 
     const handleSubmit = async () => {
         const {values: {emailAddress, password}} = formHook;
 
         try {
-            await axios.post('/api/login-user', {
+            await fetch('post', {
                 emailAddress,
                 password,
             });
-            router.push('/dashboard');
         } catch (e) {
             console.error(e);
         }
@@ -35,6 +42,10 @@ function LoginForm() {
 
     return (
         <Form formHook={formHook} onSubmit={handleSubmit}>
+            <Message show={done && error} error>
+                {error}
+            </Message>
+
             <HookInput
                 errorMessage={'Nesprávně vyplněný email'}
                 formHook={formHook}
@@ -50,7 +61,7 @@ function LoginForm() {
                 type={'password'}
             />
 
-            <Button type={'submit'}>Přihlásit se</Button>
+            <Button busy={loading} type={'submit'}>Přihlásit se</Button>
         </Form>
     )
 }

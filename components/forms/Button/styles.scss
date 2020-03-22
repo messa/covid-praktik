@@ -2,16 +2,19 @@
 
 .button {
     background-color: $como;
+    border: none;
     color: $white;
     cursor: pointer;
     display: inline-block;
     font-size: $font-size;
+    font-family: $font-family;
     font-weight: 700;
     line-height: 1.75;
     min-width: 200px;
     padding: 10px 20px;
     position: relative;
     text-transform: uppercase;
+    vertical-align: middle;
 
     &:disabled {
         cursor: default;
@@ -21,6 +24,9 @@
         font-size: $font-size-tiny;
         min-width: auto;
         padding: 5px 10px;
+    }
+    &.red {
+        background-color: $wild-strawberry;
     }
 
     a {

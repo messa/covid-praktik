@@ -1,17 +1,20 @@
 import React from 'react';
 
+import Container from 'Components/Container';
 import RegistrationForm from 'Components/RegistrationForm';
-import Wrapper from '../components/Wrapper';
+import Wrapper from 'Components/Wrapper';
 
 import 'Sass/globals.scss';
 
 function RegistrationPage() {
     return (
-        <Wrapper>
-            <h1>Registrace</h1>
+        <Container>
+            <Wrapper>
+                <h1>Registrace</h1>
 
-            <RegistrationForm/>
-        </Wrapper>
+                <RegistrationForm/>
+            </Wrapper>
+        </Container>
     );
 }
 

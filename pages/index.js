@@ -2,31 +2,34 @@ import React from 'react';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 
+import Container from 'Components/Container';
 import LoginForm from 'Components/LoginForm';
+import Message from 'Components/Message';
 import Wrapper from 'Components/Wrapper';
 
 import FLAGS from 'Consts/flags';
 
 import 'Sass/globals.scss';
-import Message from '../components/Message';
 
 function IndexPage() {
     const {query: {flag}} = useRouter();
 
     return (
-        <Wrapper condensed>
-            {flag === FLAGS.registrationSuccessful && (
-                <Message success>
-                    <p>Registrace proběhla úspěšně. Můžete se přihlásit do systému</p>
-                </Message>
-            )}
+        <Container>
+            <Wrapper condensed>
+                {flag === FLAGS.registrationSuccessful && (
+                    <Message success>
+                        <p>Registrace proběhla úspěšně. Můžete se přihlásit do systému</p>
+                    </Message>
+                )}
 
-            <h1>Evidence vybavení ordinací</h1>
+                <h1>Evidence vybavení ordinací</h1>
 
-            <LoginForm/>
+                <LoginForm/>
 
-            <p><Link href='/registration'><a>Registrace</a></Link></p>
-        </Wrapper>
+                <p><Link href='/registration'><a>Registrace</a></Link></p>
+            </Wrapper>
+        </Container>
     );
 }
 

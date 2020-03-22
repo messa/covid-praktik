@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import axios from 'axios';
 
 import Button from 'Components/forms/Button';
 import Form from 'Components/forms/Form';
 import HookInput from 'Components/forms/HookInput';
+import Message from 'Components/Message';
 
+import useFetch from 'Hooks/useFetch';
 import useForm from 'Hooks/useForm';
 
 import styles from './styles.scss';
@@ -25,14 +26,21 @@ export default function SupplyForm({modalController}) {
         newGoggles: 0,
         newStateGoggles: 0,
     });
+    const {fetch, state: {done, error, loading}} = useFetch('/api/');
     const [newEqVisible, setNewEqVisible] = useState(false);
+
+    if (done && !error) {
+        modalController[1](false);
+
+        return null;
+    }
 
     const handleSubmit = async function() {
         const {values} = formHook;
 
         try {
             //await axios.post('/api/', values);
-            modalController[1](false);
+            await fetch('post', values);
         } catch (e) {
             console.error(e);
         }
@@ -40,6 +48,10 @@ export default function SupplyForm({modalController}) {
 
     return (
         <Form formHook={formHook} onSubmit={handleSubmit}>
+            <Message show={done && error} error>
+                {error}
+            </Message>
+
             <h3>Kolik jste od minule spotřebovali:</h3>
             <HookInput label={'Respirátorů ffp3'} type={'number'} name={'spentFfp3'} formHook={formHook}/>
             <HookInput label={'Respirátorů ffp2'} type={'number'} name={'spentFfp2'} formHook={formHook}/>
@@ -71,7 +83,6 @@ export default function SupplyForm({modalController}) {
                         <HookInput label={'Ochranné oděvy'} type={'number'} name={'newSuits'} formHook={formHook}/>
                         <HookInput label={'Z toho od státu'} type={'number'} name={'newStateSuits'} formHook={formHook}/>
                     </div>
-
                 </div>
             )}
             <p>
