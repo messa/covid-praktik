@@ -1,4 +1,5 @@
 {
+  "regions": ["bru1"],
   "env": {
     "MONGO_URI": "@covidpraktik-mongo-uri"
   }
