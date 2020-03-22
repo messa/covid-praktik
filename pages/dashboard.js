@@ -2,6 +2,7 @@ import React from 'react';
 
 import {getSession, getUserById, getOfficeById} from '../lib/model';
 
+import Container from 'Components/Container';
 import NotLoggedIn from 'Components/dashboard/NotLoggedIn';
 import OfficeInfo from 'Components/dashboard/OfficeInfo';
 import SupplyHistory from 'Components/dashboard/SupplyHistory';
@@ -18,15 +19,19 @@ function Dashboard({notLoggedIn, user, office}) {
     const {name: officeName} = office;
 
     return (
-        <Wrapper>
-            <UserInfo user={user}/>
+        <Container>
+            <Wrapper>
+                <UserInfo user={user}/>
 
-            <h1>{officeName}</h1>
-
-            <OfficeInfo/>
-
-            <SupplyHistory/>
-        </Wrapper>
+                <h1>{officeName}</h1>
+            </Wrapper>
+            <Wrapper>
+                <OfficeInfo/>
+            </Wrapper>
+            <Wrapper>
+                <SupplyHistory/>
+            </Wrapper>
+        </Container>
     );
 }
 
@@ -46,7 +51,7 @@ export async function getServerSideProps({req, res}) {
             user: {
                 id: user._id,
                 emailAddress: user.emailAddress,
-                isAdmin: user.isAdmin,
+                isAdmin: user.isAdmin || false,
             },
             office: {
                 id: office._id,

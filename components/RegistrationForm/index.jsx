@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import {useRouter} from 'next/router';
 
 import Button from 'Components/forms/Button';
@@ -9,6 +8,8 @@ import HookInput from 'Components/forms/HookInput';
 import FLAGS from 'Consts/flags';
 import useForm from 'Hooks/useForm';
 import {isEmailValid, isFilled} from 'Helpers/validations';
+import useFetch from '../../hooks/useFetch';
+import Message from '../Message';
 
 function RegistrationForm() {
     const formHook = useForm({
@@ -22,20 +23,26 @@ function RegistrationForm() {
         password: val => isFilled(val),
         password2: (val, {password}) => val === password,
     });
+    const {fetch, state: {done, error, loading}} = useFetch('/api/register-user');
     const router = useRouter();
+
+    if (done && !error) {
+        router.push({
+            pathname: '/',
+            query: {flag: FLAGS.registrationSuccessful},
+        });
+
+        return null;
+    }
 
     const handleSubmit = async () => {
         const {values: {emailAddress, officeName, password}} = formHook;
 
         try {
-            await axios.post('/api/register-user', {
+            await fetch('post', {
                 emailAddress,
                 officeName,
                 password,
-            });
-            router.push({
-                pathname: '/',
-                query: {flag: FLAGS.registrationSuccessful},
             });
         } catch (e) {
             console.error(e);
@@ -44,6 +51,10 @@ function RegistrationForm() {
 
     return (
         <Form formHook={formHook} onSubmit={handleSubmit}>
+            <Message show={done && error} error>
+                {error}
+            </Message>
+
             <HookInput
                 errorMessage={'Nesprávně vyplněný email'}
                 formHook={formHook}
@@ -72,7 +83,7 @@ function RegistrationForm() {
                 type={'password'}
             />
 
-            <Button type={'submit'}>Registruj se</Button>
+            <Button busy={loading} type={'submit'}>Registruj se</Button>
         </Form>
     );
 }

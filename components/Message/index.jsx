@@ -7,7 +7,11 @@ import SuccessSvg from 'Svg/success.svg';
 
 import styles from './styles.scss';
 
-function Message({className, children, error = false, success = false}) {
+function Message({className, children, error = false, show = true, success = false}) {
+    if (!show) {
+        return null;
+    }
+
     const Icon = error ? ErrorSvg : success ? SuccessSvg : InfoSvg;
 
     return (

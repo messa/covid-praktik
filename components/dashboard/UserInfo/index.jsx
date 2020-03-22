@@ -8,7 +8,7 @@ import SupplyForm from 'Components/dashboard/SupplyForm';
 import styles from './styles.scss';
 
 function UserInfo({user}) {
-    const modalController = useState(true);
+    const modalController = useState(false);
 
     const {emailAddress} = user;
 
@@ -20,13 +20,12 @@ function UserInfo({user}) {
                 <>{' '}<Link href='/admin'><a>Administrace</a></Link></>
             )}
 
-            {' '}<a href='/api/logout-and-redirect'>Odhlásit</a>
-
             <Button small onClick={() => modalController[1](visible => !visible)}>Zaznamenat změnu stavů</Button>
+            <Button href={'/api/logout-and-redirect'} small red>Odhlásit</Button>
+
             <ModalWindow controller={modalController}>
                 <SupplyForm modalController={modalController}/>
             </ModalWindow>
-
         </div>
     );
 }
