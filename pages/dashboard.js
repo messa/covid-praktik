@@ -2,6 +2,8 @@ import {useState} from 'react';
 import Link from 'next/link';
 import { getSession, getUserById, getOfficeById } from '../lib/model'
 
+import 'Sass/globals.scss';
+
 function Dashboard({ notLoggedIn, user, office }) {
     if (notLoggedIn) {
       return (

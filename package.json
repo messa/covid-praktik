@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@zeit/next-sass": "^1.0.1",
-    "node-sass": "^4.13.1"
+    "node-sass": "^4.13.1",
+    "react-svg-loader": "^3.0.3"
   }
 }

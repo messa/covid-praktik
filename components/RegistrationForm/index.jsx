@@ -6,6 +6,7 @@ import Button from 'Components/forms/Button';
 import Form from 'Components/forms/Form';
 import HookInput from 'Components/forms/HookInput';
 
+import FLAGS from 'Consts/flags';
 import useForm from 'Hooks/useForm';
 import {isEmailValid, isFilled} from 'Helpers/validations';
 
@@ -30,9 +31,12 @@ function RegistrationForm() {
             await axios.post('/api/register-user', {
                 emailAddress,
                 officeName,
-                password
+                password,
             });
-            router.push('/?showMessage=registrationSuccessfull');
+            router.push({
+                pathname: '/',
+                query: {flag: FLAGS.registrationSuccessful},
+            });
         } catch (e) {
             console.error(e);
         }
@@ -70,7 +74,7 @@ function RegistrationForm() {
 
             <Button type={'submit'}>Registruj se</Button>
         </Form>
-    )
+    );
 }
 
 export default RegistrationForm;
