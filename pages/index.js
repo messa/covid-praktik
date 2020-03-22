@@ -1,25 +1,28 @@
-import React from 'react'
-import Link from 'next/link'
-// import { foobar } from '../lib/model'
-import LoginForm from '../components/LoginForm'
+import React from 'react';
+import Link from 'next/link';
 
-function IndexPage({foo}) {
+import LoginForm from 'Components/LoginForm';
+import Wrapper from 'Components/Wrapper';
+
+import 'Sass/globals.scss';
+
+function IndexPage() {
     return (
-        <div>
+        <Wrapper>
             <h1>Evidence vybavení ordinací</h1>
 
-            <LoginForm />
+            <LoginForm/>
 
             <p><Link href='/registration'><a>Registrace</a></Link></p>
-        </div>
+        </Wrapper>
     );
 }
 
 export async function getServerSideProps(context) {
-  return {
-    props: { // will be passed to the page component as props
-    }
-  }
+    return {
+        props: { // will be passed to the page component as props
+        },
+    };
 }
 
 export default IndexPage;

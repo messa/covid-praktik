@@ -22,11 +22,16 @@
   "dependencies": {
     "axios": "^0.19.2",
     "bcrypt": "^4.0.1",
+    "classnames": "^2.2.6",
     "cookie": "^0.4.0",
     "mongoose": "^5.9.5",
     "nanoid": "^2.1.11",
     "next": "^9.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "node-sass": "^4.13.1"
   }
 }

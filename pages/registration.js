@@ -1,13 +1,17 @@
 import React from 'react';
-import RegistrationForm from '../components/RegistrationForm';
+
+import RegistrationForm from 'Components/RegistrationForm';
+import Wrapper from '../components/Wrapper';
+
+import 'Sass/globals.scss';
 
 function RegistrationPage() {
     return (
-        <div>
+        <Wrapper>
             <h1>Registrace</h1>
 
             <RegistrationForm/>
-        </div>
+        </Wrapper>
     );
 }
 
