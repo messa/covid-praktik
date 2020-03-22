@@ -47,12 +47,12 @@ export default function PersonalForm({modalController}) {
             <div className={styles.group}>
                 <HookInput label={'Celkem doktorů'} type={'number'} name={'doctors'} formHook={formHook}/>
                 <HookInput label={'Z toho v karanténě'} type={'number'} name={'quarantinedDoctors'} formHook={formHook}/>
-                <HookInput label={'Z toho na neschopence'} type={'number'} name={'sickDoctors'} formHook={formHook}/>
+                <HookInput label={'Z toho nemocných'} type={'number'} name={'sickDoctors'} formHook={formHook}/>
             </div>
             <div className={styles.group}>
                 <HookInput label={'Celkem sester'} type={'number'} name={'nurses'} formHook={formHook}/>
                 <HookInput label={'Z toho v karanténě'} type={'number'} name={'quarantinedNurses'} formHook={formHook}/>
-                <HookInput label={'Z toho na neschopence'} type={'number'} name={'sickNurses'} formHook={formHook}/>
+                <HookInput label={'Z toho nemocných'} type={'number'} name={'sickNurses'} formHook={formHook}/>
             </div>
 
             <p>
