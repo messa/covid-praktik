@@ -28,7 +28,22 @@ function UserAdminPage({ user, officeList }) {
 
       <h1>Přehled ordinací</h1>
 
-       <pre>{JSON.stringify(officeList, null, 2)}</pre>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Název</th>
+          </tr>
+        </thead>
+        <tbody>
+          {officeList.map(office => (
+            <tr>
+              <td><code>{office.id}</code></td>
+              <td>{office.name}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
     </div>
   )

@@ -28,7 +28,24 @@ function UserAdminPage({ user, userList }) {
 
       <h1>Přehled uživatelů</h1>
 
-       <pre>{JSON.stringify(userList, null, 2)}</pre>
+      <table>
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>E-mail</th>
+            <th>Oprávnění</th>
+          </tr>
+        </thead>
+        <tbody>
+          {userList.map(u => (
+            <tr>
+              <td><code>{u.id}</code></td>
+              <td>{u.emailAddress}</td>
+              <td>{u.isAdmin && 'Administrátor'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
     </div>
   )
