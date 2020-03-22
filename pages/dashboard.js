@@ -37,7 +37,13 @@ function Dashboard({ notLoggedIn, user, office }) {
     return (
         <div>
 
-            <p style={{ textAlign: 'right' }}>Přihlášený uživatel: {user.emailAddress}</p>
+            <p style={{ textAlign: 'right' }}>
+                Přihlášený uživatel: {user.emailAddress}
+                {user.isAdmin && (
+                    <>{' '}<Link href='/admin'><a>Administrace</a></Link></>
+                )}
+                {' '}<a href='/api/logout-and-redirect'>Odhlásit</a>
+            </p>
 
             <h1>Evidence vybavení ordinací</h1>
 
@@ -130,6 +136,7 @@ export async function getServerSideProps({ req, res }) {
       user: {
         id: user._id,
         emailAddress: user.emailAddress,
+        isAdmin: user.isAdmin,
       },
       office: {
         id: office._id,
