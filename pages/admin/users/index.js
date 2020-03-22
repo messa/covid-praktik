@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import Link from 'next/link';
-import { getSession, getUserById, getOfficeById, listAllOffices } from '../../lib/model'
+import { getSession, getUserById, getOfficeById, listAllUsers } from '../../../lib/model'
 
-function UserAdminPage({ user, officeList }) {
+function UserAdminPage({ user, userList }) {
   if (!user) {
     return (
       <div>
@@ -26,20 +26,22 @@ function UserAdminPage({ user, officeList }) {
             {' '}<a href='/api/logout-and-redirect'>Odhlásit</a>
         </p>
 
-      <h1>Přehled ordinací</h1>
+      <h1>Přehled uživatelů</h1>
 
       <table>
         <thead>
           <tr>
             <th>Id</th>
-            <th>Název</th>
+            <th>E-mail</th>
+            <th>Oprávnění</th>
           </tr>
         </thead>
         <tbody>
-          {officeList.map(office => (
+          {userList.map(u => (
             <tr>
-              <td><code>{office.id}</code></td>
-              <td>{office.name}</td>
+              <td><code>{u.id}</code></td>
+              <td>{u.emailAddress}</td>
+              <td>{u.isAdmin && 'Administrátor'}</td>
             </tr>
           ))}
         </tbody>
@@ -75,7 +77,7 @@ export async function getServerSideProps({ req, res }) {
     }
   }
   const office = await getOfficeById(user.officeId)
-  const allOffices = await listAllOffices()
+  const allUsers = await listAllUsers()
   return {
     props: {
       user: {
@@ -87,9 +89,10 @@ export async function getServerSideProps({ req, res }) {
         id: office._id,
         name: office.name,
       },
-      officeList: allOffices.map(o => ({
-        id: o._id,
-        name: o.name,
+      userList: allUsers.map(u => ({
+        id: u._id,
+        emailAddress: u.emailAddress,
+        isAdmin: u.isAdmin,
       })),
     },
   }
