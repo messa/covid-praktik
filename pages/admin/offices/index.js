@@ -37,7 +37,7 @@ function UserAdminPage({ user, officeList }) {
         </thead>
         <tbody>
           {officeList.map(office => (
-            <tr>
+            <tr key={office.id}>
               <td><Link href='/admin/offices/[officeId]' as={`/admin/offices/${office.id}`}><a><code>{office.id}</code></a></Link></td>
               <td>{office.name}</td>
             </tr>
