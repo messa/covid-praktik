@@ -17,7 +17,7 @@ function UserInfo({user}) {
 
             <Button small onClick={() => modalController[1](visible => !visible)}>Zaznamenat změnu stavů</Button>
             <ModalWindow controller={modalController}>
-                <SupplyForm/>
+                <SupplyForm modalController={modalController}/>
             </ModalWindow>
         </div>
     );

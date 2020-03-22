@@ -1,13 +1,15 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
+import Button from 'Components/forms/Button';
 import Form from 'Components/forms/Form';
-import useForm from '../../../hooks/useForm';
-import HookInput from '../../forms/HookInput';
-import Button from '../../forms/Button';
+import HookInput from 'Components/forms/HookInput';
+
+import useForm from 'Hooks/useForm';
 
 import styles from './styles.scss';
 
-export default function SupplyForm() {
+export default function SupplyForm({modalController}) {
     const formHook = useForm({
         spentFfp3: 0,
         spentFfp2: 0,
@@ -25,9 +27,16 @@ export default function SupplyForm() {
     });
     const [newEqVisible, setNewEqVisible] = useState(false);
 
-    function handleSubmit() {
-        console.log('handleSubmit', formHook.values);
-    }
+    const handleSubmit = async function() {
+        const {values} = formHook;
+
+        try {
+            //await axios.post('/api/', values);
+            modalController[1](false);
+        } catch (e) {
+            console.error(e);
+        }
+    };
 
     return (
         <Form formHook={formHook} onSubmit={handleSubmit}>
