@@ -46,6 +46,7 @@ export async function getServerSideProps({req, res}) {
             user: {
                 id: user._id,
                 emailAddress: user.emailAddress,
+                isAdmin: user.isAdmin,
             },
             office: {
                 id: office._id,
