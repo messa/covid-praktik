@@ -39,7 +39,7 @@ function UserAdminPage({ user, userList }) {
         <tbody>
           {userList.map(u => (
             <tr>
-              <td><code>{u.id}</code></td>
+              <td><Link href='/admin/users/[userId]' as={`/admin/users/${u.id}`}><a><code>{u.id}</code></a></Link></td>
               <td>{u.emailAddress}</td>
               <td>{u.isAdmin && 'Administrátor'}</td>
             </tr>
