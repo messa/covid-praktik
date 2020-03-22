@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function SupplyHistory() {
+export default function SupplyHistory({ supplyUpdates }) {
     const equipments = ['ffp3', 'ffp2', 'ochr. obleky', 'brýle/štíty'];
     const historyData = [
         {
@@ -26,6 +26,8 @@ export default function SupplyHistory() {
     return (
         <div>
             <h3>Přehled dříve zadaných dat</h3>
+
+            <pre>{JSON.stringify(supplyUpdates, null, 2)}</pre>
 
             <table>
                 <thead>

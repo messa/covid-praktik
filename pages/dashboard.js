@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getSession, getUserById, getOfficeById, getLastStaffState} from '../lib/model';
+import {getSession, getUserById, getOfficeById, getLastStaffState, getSupplyUpdates} from '../lib/model';
 
 import Container from 'Components/Container';
 import NotLoggedIn from 'Components/dashboard/NotLoggedIn';
@@ -11,7 +11,7 @@ import Wrapper from 'Components/Wrapper';
 
 import 'Sass/globals.scss';
 
-function Dashboard({notLoggedIn, user, office, staffState}) {
+function Dashboard({notLoggedIn, user, office, staffState, supplyUpdates }) {
     if (notLoggedIn) {
         return <NotLoggedIn/>;
     }
@@ -29,7 +29,7 @@ function Dashboard({notLoggedIn, user, office, staffState}) {
                 <OfficeInfo staffState={staffState} />
             </Wrapper>
             <Wrapper>
-                <SupplyHistory/>
+                <SupplyHistory supplyUpdates={supplyUpdates} />
             </Wrapper>
         </Container>
     );
@@ -47,6 +47,7 @@ export async function getServerSideProps({req, res}) {
     }
     const office = await getOfficeById(user.officeId);
     const staffState = await getLastStaffState(user.officeId)
+    const supplyUpdates = await getSupplyUpdates(user.officeId)
     return {
         props: {
             user: {
@@ -66,6 +67,21 @@ export async function getServerSideProps({req, res}) {
                 nurseQuarantinedCount: staffState.nurseQuarantinedCount,
                 nurseSickCount: staffState.nurseSickCount,
             },
+            supplyUpdates: supplyUpdates.map(ch => ({
+                date: ch.date.toISOString(),
+                ffp3Consumed: ch.ffp3Consumed,
+                ffp3Received: ch.ffp3Received,
+                ffp3ReceivedFromState: ch.ffp3ReceivedFromState,
+                ffp2Consumed: ch.ffp2Consumed,
+                ffp2Received: ch.ffp2Received,
+                ffp2ReceivedFromState: ch.ffp2ReceivedFromState,
+                shieldConsumed: ch.shieldConsumed,
+                shieldReceived: ch.shieldReceived,
+                shieldReceivedFromState: ch.shieldReceivedFromState,
+                suitConsumed: ch.suitConsumed,
+                suitReceived: ch.suitReceived,
+                suitReceivedFromState: ch.suitReceivedFromState,
+            })),
         },
     };
 }

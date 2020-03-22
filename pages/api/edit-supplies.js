@@ -1,5 +1,5 @@
 import { withSession } from '../../lib/decorators'
-import { getUserById, insertSuppliesChange, insertDisinfectionState } from '../../lib/model'
+import { getUserById, insertSupplyUpdate, insertDisinfectionState } from '../../lib/model'
 
 export default withSession(async function (req, res) {
   const user = await getUserById(req.session.get('userId'))
@@ -7,7 +7,7 @@ export default withSession(async function (req, res) {
     return res.status(400).json({ error: 'Nesprávné přihlšovací údaje' })
   }
   try {
-    await insertSuppliesChange(user.officeId, {
+    await insertSupplyUpdate(user.officeId, {
       ffp3Consumed: req.body.spentFfp3,
       ffp3Received: req.body.newFfp3,
       ffp3ReceivedFromState: req.body.newStateFfp3,
