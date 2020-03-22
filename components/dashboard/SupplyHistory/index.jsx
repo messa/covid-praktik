@@ -12,33 +12,42 @@ export default function SupplyHistory({ supplyUpdates }) {
         <div>
             <h3>Přehled dříve zadaných dat</h3>
 
-            <table>
-                <thead>
-                <tr>
-                    <th>Datum</th>
-                    {equipmentNames.map(([name, title]) => (
-                        <th key={name}>{title}</th>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
-                    {supplyUpdates.map(up => (
-                        <tr key={up.date}>
-                            <td>{new Date(up.date).toLocaleString('cs-CZ')}</td>
-                            {equipmentNames.map(([name, title]) => (
-                                <td key={name}>
-                                    <span title={title}>
-                                        +{up[name + 'Received']}
-                                        ({up[name + 'ReceivedFromState']})
-                                        {' '}
-                                        -{up[name + 'Consumed']}
-                                    </span>
-                                </td>
-                            ))}
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            {(!supplyUpdates || supplyUpdates.length == 0) ? (
+
+                <p>Zatím nebyla zadána žádná data.</p>
+
+            ) : (
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Datum</th>
+                        {equipmentNames.map(([name, title]) => (
+                            <th key={name}>{title}</th>
+                        ))}
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {supplyUpdates.map(up => (
+                            <tr key={up.date}>
+                                <td>{new Date(up.date).toLocaleString('cs-CZ')}</td>
+                                {equipmentNames.map(([name, title]) => (
+                                    <td key={name}>
+                                        <span title={title}>
+                                            +{up[name + 'Received']}
+                                            ({up[name + 'ReceivedFromState']})
+                                            {' '}
+                                            -{up[name + 'Consumed']}
+                                        </span>
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+
+            )}
+
         </div>
     );
 }
