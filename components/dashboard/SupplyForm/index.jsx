@@ -26,7 +26,7 @@ export default function SupplyForm({modalController}) {
         newGoggles: 0,
         newStateGoggles: 0,
     });
-    const {fetch, state: {done, error, loading}} = useFetch('/api/');
+    const {fetch, state: {done, error, loading}} = useFetch('/api/edit-supplies');
     const [newEqVisible, setNewEqVisible] = useState(false);
 
     if (done && !error) {
