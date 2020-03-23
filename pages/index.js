@@ -1,6 +1,7 @@
-import React from 'react';
-import {useRouter} from 'next/router';
+import React, { useEffect } from 'react';
+import Router, {useRouter} from 'next/router';
 import Head from 'next/head';
+import { getSession, getUserById } from '../lib/model';
 
 import Button from 'Components/forms/Button';
 import Container from 'Components/Container';
@@ -14,8 +15,14 @@ import TITLE from 'Consts/title';
 
 import 'Sass/globals.scss';
 
-function IndexPage() {
+function IndexPage({ user }) {
     const {query: {flag}} = useRouter();
+
+    useEffect(() => {
+        if (!flag && user) {
+            Router.push('/dashboard');
+        }
+    });
 
     return (
         <Container>
@@ -42,4 +49,17 @@ function IndexPage() {
     );
 }
 
+export async function getServerSideProps({req, res}) {
+    const session = await getSession(req, res);
+    const user = await getUserById(session.get('userId'));
+    return {
+        props: {
+            user: !user ? null : {
+                id: user._id,
+                emailAddress: user.emailAddress,
+                isAdmin: user.isAdmin || false,
+            },
+        },
+    };
+}
 export default IndexPage;
