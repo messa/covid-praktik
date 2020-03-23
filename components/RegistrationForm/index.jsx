@@ -4,12 +4,12 @@ import {useRouter} from 'next/router';
 import Button from 'Components/forms/Button';
 import Form from 'Components/forms/Form';
 import HookInput from 'Components/forms/HookInput';
+import Message from 'Components/Message';
 
 import FLAGS from 'Consts/flags';
+import useFetch from 'Hooks/useFetch';
 import useForm from 'Hooks/useForm';
 import {isEmailValid, isFilled} from 'Helpers/validations';
-import useFetch from '../../hooks/useFetch';
-import Message from '../Message';
 
 function RegistrationForm() {
     const formHook = useForm({

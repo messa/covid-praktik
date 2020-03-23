@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useCallback} from 'react';
 import classNames from 'classnames';
 
-import Transition from '../Transition';
+import Transition from 'Components/Transition';
 
 import CloseSvg from 'Svg/error.svg';
 

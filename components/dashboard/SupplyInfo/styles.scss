@@ -1,6 +1,6 @@
 @import '~Sass/_helpers.scss';
 
-.table td > span + span {
+.button {
     margin-left: 10px;
 }
 .icon {
@@ -13,4 +13,7 @@
     &.up {
         fill: $mountain-meadow;
     }
+}
+.table td > span + span {
+    margin-left: 10px;
 }

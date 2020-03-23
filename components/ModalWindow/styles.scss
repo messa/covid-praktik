@@ -29,6 +29,7 @@
     }
 
     @include media(tablet) {
+        min-width: 450px;
         padding: 60px;
         width: auto;
 

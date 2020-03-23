@@ -5,11 +5,12 @@ import {getSession, getUserById, getOfficeById, getLastStaffState, getSupplyUpda
 
 import Container from 'Components/Container';
 import NotLoggedIn from 'Components/dashboard/NotLoggedIn';
-import OfficeInfo from 'Components/dashboard/OfficeInfo';
-import SupplyHistory from 'Components/dashboard/SupplyHistory';
+import StaffInfo from 'Components/dashboard/StaffInfo';
+import SupplyInfo from 'Components/dashboard/SupplyInfo';
 import UserInfo from 'Components/dashboard/UserInfo';
-import Wrapper from 'Components/Wrapper';
+import OfficeInfo from 'Components/dashboard/OfficeInfo';
 import StagingEnvNotice from 'Components/StagingEnvNotice';
+import Wrapper from 'Components/Wrapper';
 
 import TITLE from 'Consts/title';
 
@@ -25,20 +26,21 @@ function Dashboard({notLoggedIn, user, office, staffState, supplyUpdates }) {
             <Head>
                 <title>{`${TITLE} | Přehled`}</title>
             </Head>
+
             <Wrapper>
                 <UserInfo user={user}/>
-                <h1>{office.name}</h1>
-                <p>{office.street && `${office.street},`} {office.postalCode} {office.city}</p>
+
+                <OfficeInfo office={office}/>
             </Wrapper>
             <Wrapper>
-                <OfficeInfo staffState={staffState}/>
+                <StaffInfo staffState={staffState}/>
             </Wrapper>
             <Wrapper>
-                <SupplyHistory supplyUpdates={supplyUpdates}/>
+                <SupplyInfo supplyUpdates={supplyUpdates}/>
             </Wrapper>
 
             <Wrapper>
-                <StagingEnvNotice />
+                <StagingEnvNotice/>
             </Wrapper>
         </Container>
     );
@@ -70,6 +72,8 @@ export async function getServerSideProps({req, res}) {
                 street: office.street || null,
                 city: office.city || null,
                 postalCode: office.postalCode || null,
+                // TODO: rewite this mock - see /consts/officeStates.js
+                stateId: 2,
             },
             staffState: {
                 doctorTotalCount: staffState ? staffState.doctorTotalCount : 0,
