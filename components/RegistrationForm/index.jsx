@@ -71,7 +71,7 @@ function RegistrationForm() {
             <HookInput
                 errorMessage={'Ulice musí být vyplněná'}
                 formHook={formHook}
-                label={'Ulice a číslo ordinace'}
+                label={'Ulice a číslo popisné'}
                 name={'officeStreetAndNumber'}
             />
             <HookInput
