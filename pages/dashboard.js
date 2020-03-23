@@ -9,6 +9,7 @@ import OfficeInfo from 'Components/dashboard/OfficeInfo';
 import SupplyHistory from 'Components/dashboard/SupplyHistory';
 import UserInfo from 'Components/dashboard/UserInfo';
 import Wrapper from 'Components/Wrapper';
+import StagingEnvNotice from 'Components/StagingEnvNotice';
 
 import TITLE from 'Consts/title';
 
@@ -36,6 +37,10 @@ function Dashboard({notLoggedIn, user, office, staffState, supplyUpdates }) {
             </Wrapper>
             <Wrapper>
                 <SupplyHistory supplyUpdates={supplyUpdates}/>
+            </Wrapper>
+
+            <Wrapper>
+                <StagingEnvNotice />
             </Wrapper>
         </Container>
     );

@@ -7,6 +7,7 @@ import Container from 'Components/Container';
 import LoginForm from 'Components/LoginForm';
 import Message from 'Components/Message';
 import Wrapper from 'Components/Wrapper';
+import StagingEnvNotice from 'Components/StagingEnvNotice';
 
 import FLAGS from 'Consts/flags';
 import TITLE from 'Consts/title';
@@ -33,6 +34,8 @@ function IndexPage() {
                 <p style={{marginBottom: 60}}>Pokud nemáte vytvořený účet, <Button href={'/registration'} small>registrujte se</Button></p>
 
                 <LoginForm/>
+
+                <StagingEnvNotice />
 
             </Wrapper>
         </Container>
