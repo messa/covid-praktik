@@ -15,11 +15,17 @@ function RegistrationForm() {
     const formHook = useForm({
         emailAddress: '',
         officeName: '',
+        officeStreetAndNumber: '',
+        officeCity: '',
+        officePostalCode: '',
         password: '',
         password2: '',
     }, {
         emailAddress: val => isEmailValid(val),
         officeName: val => isFilled(val),
+        officeStreetAndNumber: val => isFilled(val),
+        officeCity: val => isFilled(val),
+        officePostalCode: val => isFilled(val),
         password: val => isFilled(val),
         password2: (val, {password}) => val === password,
     });
@@ -34,14 +40,10 @@ function RegistrationForm() {
     }
 
     const handleSubmit = async () => {
-        const {values: {emailAddress, officeName, password}} = formHook;
+        const {values} = formHook;
 
         try {
-            await fetch('post', {
-                emailAddress,
-                officeName,
-                password,
-            });
+            await fetch('post', values);
         } catch (e) {
             console.error(e);
         }
@@ -65,6 +67,24 @@ function RegistrationForm() {
                 formHook={formHook}
                 label={'Název ordinace'}
                 name={'officeName'}
+            />
+            <HookInput
+                errorMessage={'Ulice musí být vyplněná'}
+                formHook={formHook}
+                label={'Ulice a číslo ordinace'}
+                name={'officeStreetAndNumber'}
+            />
+            <HookInput
+                errorMessage={'Město musí být vyplněné'}
+                formHook={formHook}
+                label={'Město'}
+                name={'officeCity'}
+            />
+            <HookInput
+                errorMessage={'PSČ musí být vyplněné'}
+                formHook={formHook}
+                label={'PSČ'}
+                name={'officePostalCode'}
             />
             <HookInput
                 errorMessage={'Heslo je povinné'}
