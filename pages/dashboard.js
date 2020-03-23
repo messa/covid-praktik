@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head';
 
 import {getSession, getUserById, getOfficeById, getLastStaffState, getSupplyUpdates} from '../lib/model';
 
@@ -8,6 +9,8 @@ import OfficeInfo from 'Components/dashboard/OfficeInfo';
 import SupplyHistory from 'Components/dashboard/SupplyHistory';
 import UserInfo from 'Components/dashboard/UserInfo';
 import Wrapper from 'Components/Wrapper';
+
+import TITLE from 'Consts/title';
 
 import 'Sass/globals.scss';
 
@@ -20,6 +23,9 @@ function Dashboard({notLoggedIn, user, office, staffState, supplyUpdates }) {
 
     return (
         <Container>
+            <Head>
+                <title>{`${TITLE} | Přehled`}</title>
+            </Head>
             <Wrapper>
                 <UserInfo user={user}/>
 

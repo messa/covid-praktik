@@ -1,5 +1,6 @@
 import React from 'react';
 import {useRouter} from 'next/router';
+import Head from 'next/head';
 
 import Button from 'Components/forms/Button';
 import Container from 'Components/Container';
@@ -8,6 +9,7 @@ import Message from 'Components/Message';
 import Wrapper from 'Components/Wrapper';
 
 import FLAGS from 'Consts/flags';
+import TITLE from 'Consts/title';
 
 import 'Sass/globals.scss';
 
@@ -16,6 +18,9 @@ function IndexPage() {
 
     return (
         <Container>
+            <Head>
+                <title>{`${TITLE} | Úvod`}</title>
+            </Head>
             <Wrapper condensed>
                 {flag === FLAGS.registrationSuccessful && (
                     <Message success>
