@@ -4,7 +4,7 @@ import { getUserById, insertSupplyUpdate, insertDisinfectionState } from '../../
 export default withSession(async function (req, res) {
   const user = await getUserById(req.session.get('userId'))
   if (!user) {
-    return res.status(400).json({ error: 'Nesprávné přihlšovací údaje' })
+    return res.status(400).json({ error: 'Nesprávné přihlašovací údaje' })
   }
   try {
     await insertSupplyUpdate(user.officeId, {

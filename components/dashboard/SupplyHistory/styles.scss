@@ -1,0 +1,16 @@
+@import '~Sass/_helpers.scss';
+
+.consumed {
+    margin-left: 10px;
+}
+.icon {
+    @include square(16px);
+    vertical-align: middle;
+
+    &.down {
+        fill: $wild-strawberry;
+    }
+    &.up {
+        fill: $mountain-meadow;
+    }
+}

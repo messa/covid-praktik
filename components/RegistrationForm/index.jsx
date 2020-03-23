@@ -31,8 +31,6 @@ function RegistrationForm() {
             pathname: '/',
             query: {flag: FLAGS.registrationSuccessful},
         });
-
-        return null;
     }
 
     const handleSubmit = async () => {

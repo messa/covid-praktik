@@ -26,10 +26,10 @@ function Dashboard({notLoggedIn, user, office, staffState, supplyUpdates }) {
                 <h1>{officeName}</h1>
             </Wrapper>
             <Wrapper>
-                <OfficeInfo staffState={staffState} />
+                <OfficeInfo staffState={staffState}/>
             </Wrapper>
             <Wrapper>
-                <SupplyHistory supplyUpdates={supplyUpdates} />
+                <SupplyHistory supplyUpdates={supplyUpdates}/>
             </Wrapper>
         </Container>
     );
@@ -59,13 +59,13 @@ export async function getServerSideProps({req, res}) {
                 id: office._id,
                 name: office.name,
             },
-            staffState: !staffState ? null : {
-                doctorTotalCount: staffState.doctorTotalCount,
-                doctorQuarantinedCount: staffState.doctorQuarantinedCount,
-                doctorSickCount: staffState.doctorSickCount,
-                nurseTotalCount: staffState.nurseTotalCount,
-                nurseQuarantinedCount: staffState.nurseQuarantinedCount,
-                nurseSickCount: staffState.nurseSickCount,
+            staffState: {
+                doctorTotalCount: staffState ? staffState.doctorTotalCount : 0,
+                doctorQuarantinedCount: staffState ? staffState.doctorQuarantinedCount : 0,
+                doctorSickCount: staffState ? staffState.doctorSickCount : 0,
+                nurseTotalCount: staffState ? staffState.nurseTotalCount : 0,
+                nurseQuarantinedCount: staffState ? staffState.nurseQuarantinedCount : 0,
+                nurseSickCount: staffState ? staffState.nurseSickCount : 0,
             },
             supplyUpdates: supplyUpdates.map(ch => ({
                 date: ch.date.toISOString(),

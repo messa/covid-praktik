@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 
 import Button from 'Components/forms/Button';
 import Form from 'Components/forms/Form';
@@ -10,22 +10,16 @@ import useForm from 'Hooks/useForm';
 
 import styles from './styles.scss';
 
-export default function PersonalForm({modalController}) {
+export default function PersonalForm({modalController, staff}) {
     const formHook = useForm({
-        doctors: 0,
-        quarantinedDoctors: 0,
-        sickDoctors: 0,
-        nurses: 0,
-        quarantinedNurses: 0,
-        sickNurses: 0,
+        doctors: staff.doctorTotalCount || 0,
+        quarantinedDoctors: staff.doctorQuarantinedCount || 0,
+        sickDoctors: staff.doctorSickCount || 0,
+        nurses: staff.nurseTotalCount || 0,
+        quarantinedNurses: staff.nurseQuarantinedCount || 0,
+        sickNurses: staff.nurseSickCount || 0,
     });
     const {fetch, state: {done, error, loading}} = useFetch('/api/edit-staff');
-
-    if (done && !error) {
-        modalController[1](false);
-
-        return null;
-    }
 
     const handleSubmit = async function() {
         const {values} = formHook;
@@ -36,6 +30,10 @@ export default function PersonalForm({modalController}) {
             console.error(e);
         }
     };
+
+    useEffect(() => {
+        done && !error && modalController[1](false);
+    }, [done, error]);
 
     return (
         <Form formHook={formHook} onSubmit={handleSubmit}>

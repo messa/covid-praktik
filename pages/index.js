@@ -1,7 +1,7 @@
 import React from 'react';
-import Link from 'next/link';
 import {useRouter} from 'next/router';
 
+import Button from 'Components/forms/Button';
 import Container from 'Components/Container';
 import LoginForm from 'Components/LoginForm';
 import Message from 'Components/Message';
@@ -25,19 +25,13 @@ function IndexPage() {
 
                 <h1>Evidence vybavení ordinací</h1>
 
+                <p style={{marginBottom: 60}}>Pokud nemáte vytvořený účet, <Button href={'/registration'} small>registrujte se</Button></p>
+
                 <LoginForm/>
 
-                <p><Link href='/registration'><a>Registrace</a></Link></p>
             </Wrapper>
         </Container>
     );
-}
-
-export async function getServerSideProps(context) {
-    return {
-        props: { // will be passed to the page component as props
-        },
-    };
 }
 
 export default IndexPage;

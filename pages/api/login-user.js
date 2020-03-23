@@ -9,7 +9,7 @@ export default withSession(async function (req, res) {
   req.session.update('userId', !user ? null : user._id)
   console.debug('getUserByEmailAndPassword:', user)
   if (!user) {
-    return res.status(400).json({ error: 'Nesprávné přihlšovací údaje' })
+    return res.status(400).json({ error: 'Nesprávné přihlašovací údaje' })
   }
   res.status(200).json({ user })
 })

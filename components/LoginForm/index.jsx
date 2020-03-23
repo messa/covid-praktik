@@ -23,8 +23,6 @@ function LoginForm() {
 
     if (done && !error) {
         router.push('/dashboard');
-
-        return null;
     }
 
     const handleSubmit = async () => {
@@ -42,6 +40,7 @@ function LoginForm() {
 
     return (
         <Form formHook={formHook} onSubmit={handleSubmit}>
+            <h2>Přihlásit se</h2>
             <Message show={done && error} error>
                 {error}
             </Message>

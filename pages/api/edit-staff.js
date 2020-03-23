@@ -4,7 +4,7 @@ import { getUserById, insertStaffState } from '../../lib/model'
 export default withSession(async function (req, res) {
   const user = await getUserById(req.session.get('userId'))
   if (!user) {
-    return res.status(400).json({ error: 'Nesprávné přihlšovací údaje' })
+    return res.status(400).json({ error: 'Nesprávné přihlašovací údaje' })
   }
   try {
     await insertStaffState(user.officeId, {

@@ -1,6 +1,13 @@
 @import '~Sass/_helpers.scss';
 
+.logout {
+    @include media(tablet) {
+        float: right;
+    }
+}
 .wrapper {
+    overflow: hidden;
+
     @include media(tablet) {
         float: right;
         margin-left: 50px;

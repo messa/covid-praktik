@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import Button from 'Components/forms/Button';
 import Form from 'Components/forms/Form';
@@ -10,7 +10,7 @@ import useForm from 'Hooks/useForm';
 
 import styles from './styles.scss';
 
-export default function SupplyForm({modalController}) {
+export default function SupplyForm({hasData, modalController}) {
     const formHook = useForm({
         spentFfp3: 0,
         spentFfp2: 0,
@@ -29,12 +29,6 @@ export default function SupplyForm({modalController}) {
     const {fetch, state: {done, error, loading}} = useFetch('/api/edit-supplies');
     const [newEqVisible, setNewEqVisible] = useState(false);
 
-    if (done && !error) {
-        modalController[1](false);
-
-        return null;
-    }
-
     const handleSubmit = async function() {
         const {values} = formHook;
 
@@ -45,24 +39,33 @@ export default function SupplyForm({modalController}) {
         }
     };
 
+    useEffect(() => {
+        done && !error && modalController[1](false);
+    }, [done, error]);
+
     return (
         <Form formHook={formHook} onSubmit={handleSubmit}>
             <Message show={done && error} error>
                 {error}
             </Message>
 
-            <h3>Kolik jste od minule spotřebovali:</h3>
-            <HookInput label={'Respirátorů ffp3'} type={'number'} name={'spentFfp3'} formHook={formHook}/>
-            <HookInput label={'Respirátorů ffp2'} type={'number'} name={'spentFfp2'} formHook={formHook}/>
-            <HookInput label={'Ochranných brýlí/štítů'} type={'number'} name={'spentGoggles'} formHook={formHook}/>
-            <HookInput label={'Ochranných oděvů'} type={'number'} name={'spentSuits'} formHook={formHook}/>
+            {hasData && (
+                <>
+                    <h3>Kolik jste od minule spotřebovali:</h3>
+                    <HookInput label={'Spotřebovaných respirátorů ffp3'} type={'number'} name={'spentFfp3'} formHook={formHook}/>
+                    <HookInput label={'Spotřebovaných respirátorů ffp2'} type={'number'} name={'spentFfp2'} formHook={formHook}/>
+                    <HookInput label={'Spotřebovaných ochranných brýlí/štítů'} type={'number'} name={'spentGoggles'} formHook={formHook}/>
+                    <HookInput label={'Spotřebovaných ochranných oděvů'} type={'number'} name={'spentSuits'} formHook={formHook}/>
 
-            <HookInput label={'Máte dostatek dezinfekce / rukavic na dva týdny?'} type={'checkbox'} name={'enoughDisinfectionGlovesSupplies'} formHook={formHook}>
-                Ano
-            </HookInput>
+                    <HookInput label={'Máte dostatek dezinfekce / rukavic na dva týdny?'} type={'checkbox'} name={'enoughDisinfectionGlovesSupplies'} formHook={formHook}>
+                        Ano
+                    </HookInput>
 
-            <Button small onClick={() => setNewEqVisible(visible => !visible)}>Máte nějaké nové pomůcky?</Button>
-            {newEqVisible && (
+                    <Button small onClick={() => setNewEqVisible(visible => !visible)}>Máte nějaké nové pomůcky?</Button>
+                </>
+            )}
+
+            {(newEqVisible || !hasData) && (
                 <div>
                     <h3>Nové pomůcky:</h3>
 
@@ -85,7 +88,7 @@ export default function SupplyForm({modalController}) {
                 </div>
             )}
             <p>
-                <Button busy={loading} type={'submit'}>Aktualizovat data</Button>
+                <Button busy={loading} type={'submit'}>{hasData ? 'Aktualizovat data' : 'Vložit data'}</Button>
             </p>
         </Form>
     )
