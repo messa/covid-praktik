@@ -79,7 +79,7 @@ export default function SupplyForm({hasData, modalController, setSupplies}) {
 
             {(newEqVisible || !hasData) && (
                 <div>
-                    <h3>{hasData ? 'Nové pomůcky' : 'Současné pomůcky'}:</h3>
+                    <h3>{hasData ? 'Máte nějaké nové pomůcky?' : 'Současné pomůcky'}:</h3>
 
                     <div className={styles.group}>
                         <HookInput label={'Respirátory ffp3'} type={'number'} name={'ffp3Received'} formHook={formHook}/>
