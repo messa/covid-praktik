@@ -74,7 +74,7 @@ function SupplyCell({data, index, name}) {
 
     return (
         index === 0
-            ? recieved + fromState
+            ? recieved
             : recieved === 0 && fromState === 0
                 ? <SupplyConsumed amount={consumed}/>
                 : (
