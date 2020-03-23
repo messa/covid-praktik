@@ -1,6 +1,6 @@
 @import '~Sass/_helpers.scss';
 
-.consumed {
+.table td > span + span {
     margin-left: 10px;
 }
 .icon {

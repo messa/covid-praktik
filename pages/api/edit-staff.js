@@ -8,12 +8,12 @@ export default withSession(async function (req, res) {
   }
   try {
     await insertStaffState(user.officeId, {
-      doctorTotalCount: req.body.doctors,
-      doctorQuarantinedCount: req.body.quarantinedDoctors,
-      doctorSickCount: req.body.sickDoctors,
-      nurseTotalCount: req.body.nurses,
-      nurseQuarantinedCount: req.body.quarantinedNurses,
-      nurseSickCount: req.body.sickNurses,
+      doctorTotalCount: req.body.doctorTotalCount,
+      doctorQuarantinedCount: req.body.doctorQuarantinedCount,
+      doctorSickCount: req.body.doctorSickCount,
+      nurseTotalCount: req.body.nurseTotalCount,
+      nurseQuarantinedCount: req.body.nurseQuarantinedCount,
+      nurseSickCount: req.body.nurseSickCount,
     })
   } catch (err) {
     return res.status(400).json({ error: err.toString() })

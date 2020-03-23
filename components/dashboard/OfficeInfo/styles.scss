@@ -1,5 +1,17 @@
 @import '~Sass/_helpers.scss';
 
+.grid {
+    @include media(tablet) {
+        display: flex;
+
+        & > div {
+            flex-grow: 1;
+        }
+    }
+}
 .table {
-    max-width: 500px;
+    max-width: 350px;
+}
+.wrapper {
+    margin-bottom: 100px;
 }

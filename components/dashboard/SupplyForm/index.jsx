@@ -10,23 +10,23 @@ import useForm from 'Hooks/useForm';
 
 import styles from './styles.scss';
 
-export default function SupplyForm({hasData, modalController}) {
+export default function SupplyForm({hasData, modalController, setSupplies}) {
     const formHook = useForm({
-        spentFfp3: 0,
-        spentFfp2: 0,
-        spentSuits: 0,
-        spentGoggles: 0,
+        ffp3Consumed: 0,
+        ffp3Received: 0,
+        ffp3ReceivedFromState: 0,
+        ffp2Consumed: 0,
+        ffp2Received: 0,
+        ffp2ReceivedFromState: 0,
+        shieldConsumed: 0,
+        shieldReceived: 0,
+        shieldReceivedFromState: 0,
+        suitConsumed: 0,
+        suitReceived: 0,
+        suitReceivedFromState: 0,
         enoughDisinfectionGlovesSupplies: false,
-        newFfp3: 0,
-        newStateFfp3: 0,
-        newFfp2: 0,
-        newStateFfp2: 0,
-        newSuits: 0,
-        newStateSuits: 0,
-        newGoggles: 0,
-        newStateGoggles: 0,
     });
-    const {fetch, state: {done, error, loading}} = useFetch('/api/edit-supplies');
+    const {fetch, state: {done, error, loading, payload}} = useFetch('/api/edit-supplies');
     const [newEqVisible, setNewEqVisible] = useState(false);
 
     const handleSubmit = async function() {
@@ -40,7 +40,19 @@ export default function SupplyForm({hasData, modalController}) {
     };
 
     useEffect(() => {
-        done && !error && modalController[1](false);
+        if (!done || error) {
+            return;
+        }
+
+        setSupplies(supplies => {
+            supplies.push({
+                ...formHook.values,
+                date: new Date(),
+            });
+
+            return supplies;
+        });
+        modalController[1](false);
     }, [done, error]);
 
     return (
@@ -52,10 +64,10 @@ export default function SupplyForm({hasData, modalController}) {
             {hasData && (
                 <>
                     <h3>Kolik jste od minule spotřebovali:</h3>
-                    <HookInput label={'Spotřebovaných respirátorů ffp3'} type={'number'} name={'spentFfp3'} formHook={formHook}/>
-                    <HookInput label={'Spotřebovaných respirátorů ffp2'} type={'number'} name={'spentFfp2'} formHook={formHook}/>
-                    <HookInput label={'Spotřebovaných ochranných brýlí/štítů'} type={'number'} name={'spentGoggles'} formHook={formHook}/>
-                    <HookInput label={'Spotřebovaných ochranných oděvů'} type={'number'} name={'spentSuits'} formHook={formHook}/>
+                    <HookInput label={'Spotřebovaných respirátorů ffp3'} type={'number'} name={'ffp3Consumed'} formHook={formHook}/>
+                    <HookInput label={'Spotřebovaných respirátorů ffp2'} type={'number'} name={'ffp2Consumed'} formHook={formHook}/>
+                    <HookInput label={'Spotřebovaných ochranných brýlí/štítů'} type={'number'} name={'shieldConsumed'} formHook={formHook}/>
+                    <HookInput label={'Spotřebovaných ochranných oděvů'} type={'number'} name={'suitConsumed'} formHook={formHook}/>
 
                     <HookInput label={'Máte dostatek dezinfekce / rukavic na dva týdny?'} type={'checkbox'} name={'enoughDisinfectionGlovesSupplies'} formHook={formHook}>
                         Ano
@@ -70,20 +82,20 @@ export default function SupplyForm({hasData, modalController}) {
                     <h3>Nové pomůcky:</h3>
 
                     <div className={styles.group}>
-                        <HookInput label={'Respirátory ffp3'} type={'number'} name={'newFfp3'} formHook={formHook}/>
-                        <HookInput label={'Z toho od státu'} type={'number'} name={'newStateFfp3'} formHook={formHook}/>
+                        <HookInput label={'Respirátory ffp3'} type={'number'} name={'ffp3Received'} formHook={formHook}/>
+                        <HookInput label={'Z toho od státu'} type={'number'} name={'ffp3ReceivedFromState'} formHook={formHook}/>
                     </div>
                     <div className={styles.group}>
-                        <HookInput label={'Respirátory ffp2'} type={'number'} name={'newFfp2'} formHook={formHook}/>
-                        <HookInput label={'Z toho od státu'} type={'number'} name={'newStateFfp2'} formHook={formHook}/>
+                        <HookInput label={'Respirátory ffp2'} type={'number'} name={'ffp2Received'} formHook={formHook}/>
+                        <HookInput label={'Z toho od státu'} type={'number'} name={'ffp2ReceivedFromState'} formHook={formHook}/>
                     </div>
                     <div className={styles.group}>
-                        <HookInput label={'Ochranné brýle/štíty'} type={'number'} name={'newGoggles'} formHook={formHook}/>
-                        <HookInput label={'Z toho od státu'} type={'number'} name={'newStateGoggles'} formHook={formHook}/>
+                        <HookInput label={'Ochranné brýle/štíty'} type={'number'} name={'shieldReceived'} formHook={formHook}/>
+                        <HookInput label={'Z toho od státu'} type={'number'} name={'shieldReceivedFromState'} formHook={formHook}/>
                     </div>
                     <div className={styles.group}>
-                        <HookInput label={'Ochranné oděvy'} type={'number'} name={'newSuits'} formHook={formHook}/>
-                        <HookInput label={'Z toho od státu'} type={'number'} name={'newStateSuits'} formHook={formHook}/>
+                        <HookInput label={'Ochranné oděvy'} type={'number'} name={'suitReceived'} formHook={formHook}/>
+                        <HookInput label={'Z toho od státu'} type={'number'} name={'suitReceivedFromState'} formHook={formHook}/>
                     </div>
                 </div>
             )}

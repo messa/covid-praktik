@@ -10,14 +10,14 @@ import useForm from 'Hooks/useForm';
 
 import styles from './styles.scss';
 
-export default function PersonalForm({modalController, staff}) {
+export default function PersonalForm({modalController, staff, setStaff}) {
     const formHook = useForm({
-        doctors: staff.doctorTotalCount || 0,
-        quarantinedDoctors: staff.doctorQuarantinedCount || 0,
-        sickDoctors: staff.doctorSickCount || 0,
-        nurses: staff.nurseTotalCount || 0,
-        quarantinedNurses: staff.nurseQuarantinedCount || 0,
-        sickNurses: staff.nurseSickCount || 0,
+        doctorTotalCount: staff.doctorTotalCount || 0,
+        doctorQuarantinedCount: staff.doctorQuarantinedCount || 0,
+        doctorSickCount: staff.doctorSickCount || 0,
+        nurseTotalCount: staff.nurseTotalCount || 0,
+        nurseQuarantinedCount: staff.nurseQuarantinedCount || 0,
+        nurseSickCount: staff.nurseSickCount || 0,
     });
     const {fetch, state: {done, error, loading}} = useFetch('/api/edit-staff');
 
@@ -32,7 +32,12 @@ export default function PersonalForm({modalController, staff}) {
     };
 
     useEffect(() => {
-        done && !error && modalController[1](false);
+        if (!done || error) {
+            return;
+        }
+
+        setStaff(formHook.values);
+        modalController[1](false);
     }, [done, error]);
 
     return (
@@ -43,14 +48,14 @@ export default function PersonalForm({modalController, staff}) {
 
             <h3>Personál ordinace:</h3>
             <div className={styles.group}>
-                <HookInput label={'Celkem doktorů'} type={'number'} name={'doctors'} formHook={formHook}/>
-                <HookInput label={'Z toho v karanténě'} type={'number'} name={'quarantinedDoctors'} formHook={formHook}/>
-                <HookInput label={'Z toho nemocných'} type={'number'} name={'sickDoctors'} formHook={formHook}/>
+                <HookInput label={'Celkem doktorů'} type={'number'} name={'doctorTotalCount'} formHook={formHook}/>
+                <HookInput label={'Z toho v karanténě'} type={'number'} name={'doctorQuarantinedCount'} formHook={formHook}/>
+                <HookInput label={'Z toho nemocných'} type={'number'} name={'doctorSickCount'} formHook={formHook}/>
             </div>
             <div className={styles.group}>
-                <HookInput label={'Celkem sester'} type={'number'} name={'nurses'} formHook={formHook}/>
-                <HookInput label={'Z toho v karanténě'} type={'number'} name={'quarantinedNurses'} formHook={formHook}/>
-                <HookInput label={'Z toho nemocných'} type={'number'} name={'sickNurses'} formHook={formHook}/>
+                <HookInput label={'Celkem sester'} type={'number'} name={'nurseTotalCount'} formHook={formHook}/>
+                <HookInput label={'Z toho v karanténě'} type={'number'} name={'nurseQuarantinedCount'} formHook={formHook}/>
+                <HookInput label={'Z toho nemocných'} type={'number'} name={'nurseSickCount'} formHook={formHook}/>
             </div>
 
             <p>

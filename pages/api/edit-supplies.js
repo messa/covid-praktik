@@ -8,18 +8,18 @@ export default withSession(async function (req, res) {
   }
   try {
     await insertSupplyUpdate(user.officeId, {
-      ffp3Consumed: req.body.spentFfp3,
-      ffp3Received: req.body.newFfp3,
-      ffp3ReceivedFromState: req.body.newStateFfp3,
-      ffp2Consumed: req.body.spentFfp2,
-      ffp2Received: req.body.newFfp2,
-      ffp2ReceivedFromState: req.body.newStateFfp2,
-      shieldConsumed: req.body.spentGoggles,
-      shieldReceived: req.body.newGoggles,
-      shieldReceivedFromState: req.body.newStateGoggles,
-      suitConsumed: req.body.spentSuits,
-      suitReceived: req.body.newSuits,
-      suitReceivedFromState: req.body.newStateSuits,
+      ffp3Consumed: req.body.ffp3Consumed,
+      ffp3Received: req.body.ffp3Received,
+      ffp3ReceivedFromState: req.body.ffp3ReceivedFromState,
+      ffp2Consumed: req.body.ffp2Consumed,
+      ffp2Received: req.body.ffp2Received,
+      ffp2ReceivedFromState: req.body.ffp2ReceivedFromState,
+      shieldConsumed: req.body.shieldConsumed,
+      shieldReceived: req.body.shieldReceived,
+      shieldReceivedFromState: req.body.shieldReceivedFromState,
+      suitConsumed: req.body.suitConsumed,
+      suitReceived: req.body.suitReceived,
+      suitReceivedFromState: req.body.suitReceivedFromState,
     })
     await insertDisinfectionState(user.officeId, {
       enoughFor2Weeks: req.body.enoughDisinfectionGlovesSupplies,

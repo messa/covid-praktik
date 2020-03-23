@@ -14,8 +14,9 @@ import styles from './styles.scss';
 
 export default function SupplyHistory({supplyUpdates}) {
     const modalController = useState(false);
+    const [supplies, setSupplies] = useState(supplyUpdates);
 
-    const noData = !Array.isArray(supplyUpdates) || supplyUpdates.length === 0;
+    const noData = !Array.isArray(supplies) || supplies.length === 0;
 
     // TODO: calculate and show actual supplies
 
@@ -24,14 +25,14 @@ export default function SupplyHistory({supplyUpdates}) {
             <h2>
                 Vybavení ordinace&nbsp;
                 <Button small onClick={() => modalController[1](visible => !visible)}>
-                    {noData ? 'Vložit údaje' : 'Upravit údaje'}
+                    {noData ? 'Vložit stavy materiálu' : 'Změna stavu materiálu'}
                 </Button>
             </h2>
 
             {noData ? (
                 <p>Zatím nebyla zadána žádná data.</p>
             ) : (
-                <table>
+                <table className={styles.table}>
                     <thead>
                     <tr>
                         <th>Datum</th>
@@ -41,13 +42,13 @@ export default function SupplyHistory({supplyUpdates}) {
                     </tr>
                     </thead>
                     <tbody>
-                    <SupplyRows equipments={equipmentNames} supplies={supplyUpdates}/>
+                    <SupplyRows equipments={equipmentNames} supplies={supplies}/>
                     </tbody>
                 </table>
             )}
 
             <ModalWindow controller={modalController}>
-                <SupplyForm hasData={!noData} modalController={modalController}/>
+                <SupplyForm hasData={!noData} setSupplies={setSupplies} modalController={modalController}/>
             </ModalWindow>
         </div>
     );
@@ -75,21 +76,28 @@ function SupplyCell({data, index, name}) {
         index === 0
             ? recieved + fromState
             : recieved === 0 && fromState === 0
-                ? (
-                    <>
-                        <ArrowDown className={classNames(styles.icon, styles.down)}/>&nbsp;{consumed}
-                    </>
-                )
+                ? <SupplyConsumed amount={consumed}/>
                 : (
                     <>
-                        <ArrowUp className={classNames(styles.icon, styles.up)}/>&nbsp;{recieved} <span
-                        title={'Od státu'}>({fromState})</span>
-                        {consumed > 0 && (
-                            <span className={styles.consumed}>
-                                <ArrowDown className={classNames(styles.icon, styles.down)}/>&nbsp;{consumed}
-                            </span>
-                        )}
+                        <SupplyRecieved amount={recieved} fromState={fromState}/>
+                        {consumed > 0 && <SupplyConsumed amount={consumed}/>}
                     </>
                 )
     );
+}
+
+function SupplyConsumed({amount}) {
+    return (
+        <span title={'Spotřebované'}>
+            <ArrowDown className={classNames(styles.icon, styles.down)}/>&nbsp;{amount}
+        </span>
+    )
+}
+function SupplyRecieved({amount, fromState}) {
+    return (
+        <span title={'Nové'}>
+            <ArrowUp className={classNames(styles.icon, styles.up)}/>&nbsp;{amount}{' '}
+            <span title={'Od státu'}>({fromState})</span>
+        </span>
+    )
 }
