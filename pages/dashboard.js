@@ -20,8 +20,6 @@ function Dashboard({notLoggedIn, user, office, staffState, supplyUpdates }) {
         return <NotLoggedIn/>;
     }
 
-    const {name: officeName} = office;
-
     return (
         <Container>
             <Head>
@@ -29,8 +27,8 @@ function Dashboard({notLoggedIn, user, office, staffState, supplyUpdates }) {
             </Head>
             <Wrapper>
                 <UserInfo user={user}/>
-
-                <h1>{officeName}</h1>
+                <h1>{office.name}</h1>
+                <p>{office.street && `${office.street},`} {office.postalCode} {office.city}</p>
             </Wrapper>
             <Wrapper>
                 <OfficeInfo staffState={staffState}/>
@@ -69,6 +67,9 @@ export async function getServerSideProps({req, res}) {
             office: {
                 id: office._id,
                 name: office.name,
+                street: office.street || null,
+                city: office.city || null,
+                postalCode: office.postalCode || null,
             },
             staffState: {
                 doctorTotalCount: staffState ? staffState.doctorTotalCount : 0,

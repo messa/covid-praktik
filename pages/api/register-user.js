@@ -5,6 +5,9 @@ export default async function (req, res) {
     emailAddress: req.body.emailAddress,
     password: req.body.password,
     officeName: req.body.officeName,
+    officeStreet: req.body.officeStreetAndNumber,
+    officeCity: req.body.officeStreetAndNumber,
+    officePostalCode: req.body.officePostalCode,
   })
   if (err) {
     res.status(400).json({ error: err })
