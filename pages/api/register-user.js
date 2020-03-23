@@ -6,7 +6,7 @@ export default async function (req, res) {
     password: req.body.password,
     officeName: req.body.officeName,
     officeStreet: req.body.officeStreetAndNumber,
-    officeCity: req.body.officeStreetAndNumber,
+    officeCity: req.body.officeCity,
     officePostalCode: req.body.officePostalCode,
   })
   if (err) {
