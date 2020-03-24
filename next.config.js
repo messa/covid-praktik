@@ -12,13 +12,7 @@ module.exports = withSass({
             {
                 test: /\.svg$/,
                 exclude: /node_modules/,
-                use: [
-                    'babel-loader',
-                    {
-                        loader: "react-svg-loader",
-                    }
-                ]
-
+                use: "react-svg-loader"
             }
         );
 
