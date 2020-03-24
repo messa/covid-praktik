@@ -3,6 +3,9 @@
 .button {
     margin-left: 10px;
 }
+.currentSupplies {
+    max-width: 500px;
+}
 .icon {
     @include square(16px);
     vertical-align: middle;

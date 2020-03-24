@@ -36,6 +36,7 @@ export default function StaffForm({modalController, staff, setStaff}) {
             return;
         }
 
+        // TODO: parseInt all the values
         setStaff(formHook.values);
         modalController[1](false);
     }, [done, error]);

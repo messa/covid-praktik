@@ -26,7 +26,7 @@ export default function SupplyForm({hasData, modalController, setSupplies}) {
         suitReceivedFromState: 0,
         enoughDisinfectionGlovesSupplies: false,
     });
-    const {fetch, state: {done, error, loading, payload}} = useFetch('/api/edit-supplies');
+    const {fetch, state: {done, error, loading}} = useFetch('/api/edit-supplies');
     const [newEqVisible, setNewEqVisible] = useState(false);
 
     const handleSubmit = async function() {
@@ -44,6 +44,7 @@ export default function SupplyForm({hasData, modalController, setSupplies}) {
             return;
         }
 
+        // TODO: parseInt all the values
         setSupplies(supplies => {
             supplies.push({
                 ...formHook.values,
