@@ -1,0 +1,16 @@
+{
+    "presets": [
+      [
+        "next/babel",
+        {
+          "preset-env": {
+            "targets": "> 0.25%, not dead"
+          },
+          "transform-runtime": {},
+          "styled-jsx": {},
+          "class-properties": {}
+        }
+      ]
+    ],
+    "plugins": []
+  }
