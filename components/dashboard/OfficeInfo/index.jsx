@@ -12,9 +12,10 @@ import styles from './styles.scss';
 
 function OfficeInfo({office}) {
     const modalController = useState(false);
-    const stateController = useState(office.stateId);
+    const officeStateController = useState(office.stateId);
+    const officeDescriptionController = useState(office.description);
 
-    const state = officeStates.find(({id}) => id === stateController[0]);
+    const state = officeStates.find(({id}) => id === officeStateController[0]);
     const {name, street, city, postalCode} = office;
 
     return (
@@ -23,13 +24,20 @@ function OfficeInfo({office}) {
                 {street && <p>{street}, {postalCode} {city}</p>}
             </Heading>
 
+            <p>{officeDescriptionController[0]}</p>
+
             <Heading text={'Režim ordinace'}>
                 <Button className={styles.button} small onClick={() => modalController[1](true)}>Změnit režim ordinace</Button>
             </Heading>
+
             <Message>{state ? <strong>{state.label}</strong> : <i>Nevyplněno</i>}</Message>
 
             <ModalWindow controller={modalController}>
-                <OfficeForm stateController={stateController} modalController={modalController}/>
+                <OfficeForm
+                    officeStateController={officeStateController}
+                    officeDescriptionController={officeDescriptionController}
+                    modalController={modalController}
+                />
             </ModalWindow>
         </div>
     );
