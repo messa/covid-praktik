@@ -73,7 +73,7 @@ export async function getServerSideProps({req, res}) {
                 city: office.city || null,
                 postalCode: office.postalCode || null,
                 // TODO: rewite this mock - see /consts/officeStates.js
-                stateId: 2,
+                stateId: office.currentOfficeState || 'normal',
             },
             staffState: {
                 doctorTotalCount: staffState ? staffState.doctorTotalCount : 0,
