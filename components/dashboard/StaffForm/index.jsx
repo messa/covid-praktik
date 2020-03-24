@@ -10,7 +10,7 @@ import useForm from 'Hooks/useForm';
 
 import styles from './styles.scss';
 
-export default function PersonalForm({modalController, staff, setStaff}) {
+export default function StaffForm({modalController, staff, setStaff}) {
     const formHook = useForm({
         doctorTotalCount: staff.doctorTotalCount || 0,
         doctorQuarantinedCount: staff.doctorQuarantinedCount || 0,

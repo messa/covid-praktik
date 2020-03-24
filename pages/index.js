@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Router, {useRouter} from 'next/router';
+import {useRouter} from 'next/router';
 import Head from 'next/head';
 import { getSession, getUserById } from '../lib/model';
 
@@ -16,13 +16,14 @@ import TITLE from 'Consts/title';
 import 'Sass/globals.scss';
 
 function IndexPage({ user }) {
-    const {query: {flag}} = useRouter();
+    const router = useRouter();
+    const {query: {flag}} = router;
 
     useEffect(() => {
         if (!flag && user) {
-            Router.push('/dashboard');
+            router.push('/dashboard');
         }
-    });
+    }, []);
 
     return (
         <Container>

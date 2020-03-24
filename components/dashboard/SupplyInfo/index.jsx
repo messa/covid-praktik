@@ -12,7 +12,7 @@ import ArrowDown from 'Svg/arrow-down.svg';
 
 import styles from './styles.scss';
 
-export default function SupplyHistory({supplyUpdates}) {
+export default function SupplyInfo({supplyUpdates}) {
     const modalController = useState(false);
     const [supplies, setSupplies] = useState(supplyUpdates);
 
@@ -23,9 +23,9 @@ export default function SupplyHistory({supplyUpdates}) {
     return (
         <div>
             <h2>
-                Vybavení ordinace&nbsp;
-                <Button small onClick={() => modalController[1](visible => !visible)}>
-                    {noData ? 'Vložit stavy materiálu' : 'Změna stavu materiálu'}
+                Vybavení ordinace
+                <Button className={styles.button} small onClick={() => modalController[1](visible => !visible)}>
+                    {noData ? 'Vložit stavy materiálu' : 'Změnit stav materiálu'}
                 </Button>
             </h2>
 

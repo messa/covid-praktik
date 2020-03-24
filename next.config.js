@@ -1,7 +1,8 @@
 const path = require('path');
+const withCss = require('@zeit/next-css');
 const withSass = require('@zeit/next-sass');
 
-module.exports = withSass({
+module.exports = withSass(withCss({
     cssModules: true,
     cssLoaderOptions: {
         importLoaders: 1,
@@ -34,4 +35,4 @@ module.exports = withSass({
         return config;
     }
 
-});
+}));
