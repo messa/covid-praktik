@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import classNames from 'classnames';
 
 import Button from 'Components/forms/Button';
+import Heading from 'Components/Heading';
 import ModalWindow from 'Components/ModalWindow';
 import SupplyForm from 'Components/dashboard/SupplyForm';
 
@@ -33,18 +34,17 @@ export default function SupplyInfo({supplyUpdates}) {
 
     return (
         <div>
-            <h2>
-                Vybavení ordinace
+            <Heading text={'Vybavení ordinace'}>
                 <Button className={styles.button} small onClick={() => modalController[1](visible => !visible)}>
                     {noData ? 'Vložit stavy materiálu' : 'Změnit stav materiálu'}
                 </Button>
-            </h2>
+            </Heading>
 
             {noData ? (
                 <p>Zatím nebyla zadána žádná data.</p>
             ) : (
                 <div>
-                    <h3>Současné vybavení:</h3>
+                    <Heading text={'Současné vybavení:'} level={3}/>
                     <table className={styles.currentSupplies}>
                         <thead>
                         <tr>
@@ -64,7 +64,7 @@ export default function SupplyInfo({supplyUpdates}) {
                         </tbody>
                     </table>
 
-                    <h3>Historie změn:</h3>
+                    <Heading text={'Historie změn:'} level={3}/>
                     <table className={styles.table}>
                         <thead>
                         <tr>

@@ -23,9 +23,10 @@ table {
 
     thead th {
         border-bottom: 1px solid $silver;
-        font-size: $font-size-big;
+        font-size: $font-size-tiny;
         font-weight: 700;
         padding: 10px 0;
+        text-transform: uppercase;
     }
     td {
         padding: 10px;
