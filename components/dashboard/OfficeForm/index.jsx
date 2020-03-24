@@ -45,6 +45,7 @@ export default function OfficeForm({modalController, stateController}) {
                 formHook={formHook}
                 activeItem={officeStates.find(({id}) => id === stateController[0])}
                 placeholder={'Vyberte režim ordinace'}
+                writeProp={'id'}
                 items={officeStates}
                 label={'V jakém režimu běží ordinace'}
                 name={'state'}

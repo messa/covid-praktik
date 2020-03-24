@@ -7,6 +7,7 @@ export default function HookSelect(
         formHook,
         name,
         activeItem,
+        writeProp,
         ...rest
     }
 ) {
@@ -16,8 +17,13 @@ export default function HookSelect(
     return (
         <Select
             hasError={errors[name]}
-            onBlur={({target: {value}}) => handleValidate(name, value)}
-            onChange={({target: value}) => handleChange(name, value)}
+            onChange={item => {
+                if (!item.hasOwnProperty(writeProp)) {
+                    return console.error(`property ${writeProp} did not found in:`, item);
+                }
+
+                handleChange(name, item[writeProp]);
+            }}
             items={values[name]}
             id={name}
             controllers={{

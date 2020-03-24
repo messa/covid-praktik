@@ -30,7 +30,7 @@ export default function Select(
                 <Dropdown
                     items={items}
                     name={name}
-                    onChange={onChange}
+                    afterChange={onChange}
                     onBlur={onBlur}
                     {...rest}
                 />

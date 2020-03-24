@@ -72,7 +72,6 @@ export async function getServerSideProps({req, res}) {
                 street: office.street || null,
                 city: office.city || null,
                 postalCode: office.postalCode || null,
-                // TODO: rewite this mock - see /consts/officeStates.js
                 stateId: office.currentOfficeState || 'normal',
             },
             staffState: {
