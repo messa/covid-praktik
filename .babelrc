@@ -1,16 +1,36 @@
 {
-    "presets": [
-      [
-        "next/babel",
-        {
-          "preset-env": {
-            "targets": "> 0.25%, not dead"
-          },
-          "transform-runtime": {},
-          "styled-jsx": {},
-          "class-properties": {}
-        }
+  "env": {
+    "production": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "targets": {
+              "browsers": [
+                "ie >= 10",
+                "chrome >= 55",
+                "ff >= 55",
+                "safari >= 9"
+              ]
+            }
+          }
+        ]
       ]
-    ],
-    "plugins": []
+    },
+    "development": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "targets": {
+              "browsers": [
+                "chrome >= 55",
+                "ff >= 57"
+              ]
+            }
+          }
+        ]
+      ]
+    }
   }
+}

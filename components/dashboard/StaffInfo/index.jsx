@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import Button from 'Components/forms/Button';
+import Heading from 'Components/Heading';
 import ModalWindow from 'Components/ModalWindow';
 import StaffForm from 'Components/dashboard/StaffForm';
 
@@ -21,11 +22,13 @@ function StaffInfo({staffState}) {
 
     return (
         <div className={styles.wrapper}>
-            <h2>Personál <Button className={styles.button} small onClick={() => modalController[1](true)}>Změnit stav personálu</Button></h2>
+            <Heading text={'Personál'}>
+                <Button className={styles.button} small onClick={() => modalController[1](true)}>Změnit stav personálu</Button>
+            </Heading>
 
             <div className={styles.grid}>
                 <div>
-                    <h3>Doktoři</h3>
+                    <Heading text={'Doktoři'} level={3}/>
                     <table className={styles.table}>
                         <thead>
                         <tr>
@@ -44,7 +47,7 @@ function StaffInfo({staffState}) {
                     </table>
                 </div>
                 <div>
-                    <h3>Sestry</h3>
+                    <Heading text={'Sestry'} level={3}/>
                     <table className={styles.table}>
                         <thead>
                         <tr>

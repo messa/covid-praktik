@@ -15,11 +15,8 @@ module.exports = withSass(withCss({
                 exclude: /node_modules/,
                 use: [
                     'babel-loader',
-                    {
-                        loader: "react-svg-loader",
-                    }
+                    'react-svg-loader',
                 ]
-
             }
         );
 

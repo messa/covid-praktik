@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 
 import Button from 'Components/forms/Button';
+import Heading from 'Components/Heading';
 import Message from 'Components/Message';
 import ModalWindow from 'Components/ModalWindow';
 import OfficeForm from 'Components/dashboard/OfficeForm';
@@ -18,11 +19,13 @@ function OfficeInfo({office}) {
 
     return (
         <div className={styles.wrapper}>
-            <h1>{name}</h1>
+            <Heading level={1} text={name}/>
 
             {street && <p>{street}, {postalCode} {city}</p>}
 
-            <h2>Režim ordinace <Button className={styles.button} small onClick={() => modalController[1](true)}>Změnit režim ordinace</Button></h2>
+            <Heading text={'Režim ordinace'}>
+                <Button className={styles.button} small onClick={() => modalController[1](true)}>Změnit režim ordinace</Button>
+            </Heading>
             <Message>{state ? <strong>{state.label}</strong> : <i>Nevyplněno</i>}</Message>
 
             <ModalWindow controller={modalController}>
