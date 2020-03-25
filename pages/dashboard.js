@@ -4,12 +4,13 @@ import Head from 'next/head';
 import {getSession, getUserById, getOfficeById, getLastStaffState, getSupplyUpdates} from '../lib/model';
 
 import Container from 'Components/Container';
+import Logo from 'Components/Logo';
 import NotLoggedIn from 'Components/dashboard/NotLoggedIn';
+import OfficeInfo from 'Components/dashboard/OfficeInfo';
 import StaffInfo from 'Components/dashboard/StaffInfo';
+import StagingEnvNotice from 'Components/StagingEnvNotice';
 import SupplyInfo from 'Components/dashboard/SupplyInfo';
 import UserInfo from 'Components/dashboard/UserInfo';
-import OfficeInfo from 'Components/dashboard/OfficeInfo';
-import StagingEnvNotice from 'Components/StagingEnvNotice';
 import Wrapper from 'Components/Wrapper';
 
 import TITLE from 'Consts/title';
@@ -26,7 +27,7 @@ function Dashboard({notLoggedIn, user, office, staffState, supplyUpdates }) {
             <Head>
                 <title>{`${TITLE} | Přehled`}</title>
             </Head>
-
+            <Logo/>
             <Wrapper>
                 <UserInfo user={user}/>
 

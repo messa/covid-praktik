@@ -6,6 +6,7 @@ import { getSession, getUserById } from '../lib/model';
 import Button from 'Components/forms/Button';
 import Container from 'Components/Container';
 import LoginForm from 'Components/LoginForm';
+import Logo from 'Components/Logo';
 import Message from 'Components/Message';
 import Wrapper from 'Components/Wrapper';
 import StagingEnvNotice from 'Components/StagingEnvNotice';
@@ -30,6 +31,7 @@ function IndexPage({ user }) {
             <Head>
                 <title>{`${TITLE} | Úvod`}</title>
             </Head>
+            <Logo/>
             <Wrapper condensed>
                 {flag === FLAGS.registrationSuccessful && (
                     <Message success>
@@ -44,7 +46,6 @@ function IndexPage({ user }) {
                 <LoginForm/>
 
                 <StagingEnvNotice />
-
             </Wrapper>
         </Container>
     );

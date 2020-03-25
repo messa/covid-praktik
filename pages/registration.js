@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 
 import Container from 'Components/Container';
+import Logo from 'Components/Logo';
 import RegistrationForm from 'Components/RegistrationForm';
 import Wrapper from 'Components/Wrapper';
 
@@ -15,6 +16,7 @@ function RegistrationPage() {
             <Head>
                 <title>{`${TITLE} | Registrace`}</title>
             </Head>
+            <Logo/>
             <Wrapper>
                 <h1>Registrace</h1>
 
