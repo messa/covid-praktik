@@ -19,9 +19,9 @@ function OfficeInfo({office}) {
 
     return (
         <div className={styles.wrapper}>
-            <Heading level={1} text={name}/>
-
-            {street && <p>{street}, {postalCode} {city}</p>}
+            <Heading level={1} text={name}>
+                {street && <p>{street}, {postalCode} {city}</p>}
+            </Heading>
 
             <Heading text={'Režim ordinace'}>
                 <Button className={styles.button} small onClick={() => modalController[1](true)}>Změnit režim ordinace</Button>
