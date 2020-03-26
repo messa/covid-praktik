@@ -1,5 +1,6 @@
-import Document, {Head, Main, NextScript} from 'next/document';
 import React from 'react';
+import Document, {Head, Main, NextScript} from 'next/document';
+import {Container} from 'next/app';
 
 export default class MyDocument extends Document {
     render() {
@@ -13,7 +14,9 @@ export default class MyDocument extends Document {
                 <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
             </Head>
             <body>
-            <Main/>
+            <Container>
+                <Main/>
+            </Container>
             <NextScript/>
             </body>
             </html>
