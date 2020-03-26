@@ -7,6 +7,7 @@ import Container from 'Components/Container';
 import Logo from 'Components/Logo';
 import NotLoggedIn from 'Components/dashboard/NotLoggedIn';
 import OfficeInfo from 'Components/dashboard/OfficeInfo';
+import RouteProgress from 'Components/RouteProgress';
 import StaffInfo from 'Components/dashboard/StaffInfo';
 import StagingEnvNotice from 'Components/StagingEnvNotice';
 import SupplyInfo from 'Components/dashboard/SupplyInfo';
@@ -27,6 +28,7 @@ function Dashboard({notLoggedIn, user, office, staffState, supplyUpdates }) {
             <Head>
                 <title>{`${TITLE} | Přehled`}</title>
             </Head>
+            <RouteProgress/>
             <Logo/>
             <Wrapper>
                 <UserInfo user={user}/>

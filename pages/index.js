@@ -8,8 +8,9 @@ import Container from 'Components/Container';
 import LoginForm from 'Components/LoginForm';
 import Logo from 'Components/Logo';
 import Message from 'Components/Message';
-import Wrapper from 'Components/Wrapper';
+import RouteProgress from 'Components/RouteProgress';
 import StagingEnvNotice from 'Components/StagingEnvNotice';
+import Wrapper from 'Components/Wrapper';
 
 import FLAGS from 'Consts/flags';
 import TITLE from 'Consts/title';
@@ -31,6 +32,7 @@ function IndexPage({ user }) {
             <Head>
                 <title>{`${TITLE} | Úvod`}</title>
             </Head>
+            <RouteProgress/>
             <Logo/>
             <Wrapper condensed>
                 {flag === FLAGS.registrationSuccessful && (
