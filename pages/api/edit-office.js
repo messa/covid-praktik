@@ -9,6 +9,7 @@ export default withSession(async function (req, res) {
   try {
     await updateOffice(user.officeId, {
       officeState: req.body.state,
+      officeDescription: req.body.description,
     })
   } catch (err) {
     return res.status(400).json({ error: err.toString() })
