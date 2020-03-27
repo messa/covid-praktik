@@ -76,6 +76,7 @@ export async function getServerSideProps({req, res}) {
                 city: office.city || null,
                 postalCode: office.postalCode || null,
                 stateId: office.currentOfficeState || 'normal',
+                description: office.description || '',
             },
             staffState: {
                 doctorTotalCount: staffState ? staffState.doctorTotalCount : 0,
