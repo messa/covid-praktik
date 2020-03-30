@@ -19,6 +19,19 @@ Proč
 Bez ochranných prostředků se praktici nakazí, nebo zavřou ordinace. Zavřená ordinace PL = cca 2000 pacientů bez lékaře se zdravotními problémy nejen v souvislosti s COVID-19  mířících do nemocnice, kde je násobně větší riziko nákazy. Více nefunkčních ordinací = zhroucení systému (viz. Čína, Itálie). Praktik zná dobře své pacienty a je zdaleka nejlepší gatekeeper (denně vyřídí cca 50 konzultací), při zhroucení systému PL nemá kdo vyřídit až 250 000 konzultací denně. Stát to nechápe, musíme si poradit sami…
 
 
+Kdo
+---
+
+V abecedním pořadí:
+
+- [Václav Joza](http://medikeo.cz/) - praktický lékař, zdroj nápadů a inspirace
+- [Petr Messner](https://github.com/messa) - backend, správa serveru
+- [Vojtěch Mucha](http://www.mladipraktici.cz/cs/lide/) - praktický lékař, místopředseda [Mladých praktiků](http://www.mladipraktici.cz/)
+- [Ondřej Tůma](https://github.com/Rootre) - frontend, design
+
+Podpořeno [Svazem praktických lékařů](https://splcr.cz/).
+
+
 Screenshoty
 -----------
 
