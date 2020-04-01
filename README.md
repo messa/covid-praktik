@@ -25,7 +25,7 @@ Kdo
 V abecedním pořadí:
 
 - [Václav Joza](http://medikeo.cz/) - praktický lékař, zdroj nápadů a inspirace
-- [Petr Messner](https://github.com/messa) - backend, správa serveru
+- [Petr Messner](https://github.com/messa) - backend, infrastruktura
 - [Vojtěch Mucha](http://www.mladipraktici.cz/cs/lide/) - praktický lékař, místopředseda [Mladých praktiků](http://www.mladipraktici.cz/)
 - [Ondřej Tůma](https://github.com/Rootre) - frontend, design
 
