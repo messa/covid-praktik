@@ -1,15 +1,15 @@
 @import '~Sass/_helpers.scss';
 
 .wrapper {
-    margin: 40px auto;
-    max-width: $wrapper-width;
+  margin: 40px auto;
+  max-width: $wrapper-width;
 
-    &.condensed {
-        max-width: $wrapper-condensed-width;
-    }
+  &.condensed {
+    max-width: $wrapper-condensed-width;
+  }
 
-    @include media(tablet) {
-        margin-bottom: 60px;
-        margin-top: 60px;
-    }
+  @include media(tablet) {
+    margin-bottom: 60px;
+    margin-top: 60px;
+  }
 }

@@ -1,68 +1,78 @@
-import React from 'react';
-import {useRouter} from 'next/router';
+import React from 'react'
+import { useRouter } from 'next/router'
 
-import Button from 'Components/forms/Button';
-import Form from 'Components/forms/Form';
-import HookInput from 'Components/forms/HookInput';
-import Message from 'Components/Message';
+import Button from 'Components/forms/Button'
+import Form from 'Components/forms/Form'
+import HookInput from 'Components/forms/HookInput'
+import Message from 'Components/Message'
 
-import {isEmailValid, isFilled} from 'Helpers/validations';
-import useFetch from 'Hooks/useFetch';
-import useForm from 'Hooks/useForm';
+import { isEmailValid, isFilled } from 'Helpers/validations'
+import useFetch from 'Hooks/useFetch'
+import useForm from 'Hooks/useForm'
 
 function LoginForm() {
-    const formHook = useForm({
-        emailAddress: '',
-        password: '',
-    }, {
-        emailAddress: val => isEmailValid(val),
-        password: val => isFilled(val),
-    });
-    const router = useRouter();
-    const {fetch, state: {done, error, loading}} = useFetch('/api/login-user');
-
-    if (done && !error) {
-        router.push('/dashboard');
+  const formHook = useForm(
+    {
+      emailAddress: '',
+      password: '',
+    },
+    {
+      emailAddress: val => isEmailValid(val),
+      password: val => isFilled(val),
     }
+  )
+  const router = useRouter()
+  const {
+    fetch,
+    state: { done, error, loading },
+  } = useFetch('/api/login-user')
 
-    const handleSubmit = async () => {
-        const {values: {emailAddress, password}} = formHook;
+  if (done && !error) {
+    router.push('/dashboard')
+  }
 
-        try {
-            await fetch('post', {
-                emailAddress,
-                password,
-            });
-        } catch (e) {
-            console.error(e);
-        }
-    };
+  const handleSubmit = async () => {
+    const {
+      values: { emailAddress, password },
+    } = formHook
 
-    return (
-        <Form formHook={formHook} onSubmit={handleSubmit}>
-            <h2>Přihlásit se</h2>
-            <Message show={done && error} error>
-                {error}
-            </Message>
+    try {
+      await fetch('post', {
+        emailAddress,
+        password,
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
-            <HookInput
-                errorMessage={'Nesprávně vyplněný email'}
-                formHook={formHook}
-                label={'E-mail'}
-                name={'emailAddress'}
-                type={'email'}
-            />
-            <HookInput
-                errorMessage={'Heslo je povinné'}
-                formHook={formHook}
-                label={'Heslo'}
-                name={'password'}
-                type={'password'}
-            />
+  return (
+    <Form formHook={formHook} onSubmit={handleSubmit}>
+      <h2>Přihlásit se</h2>
+      <Message show={done && error} error>
+        {error}
+      </Message>
 
-            <Button busy={loading} type={'submit'}>Přihlásit se</Button>
-        </Form>
-    )
+      <HookInput
+        errorMessage={'Nesprávně vyplněný email'}
+        formHook={formHook}
+        label={'E-mail'}
+        name={'emailAddress'}
+        type={'email'}
+      />
+      <HookInput
+        errorMessage={'Heslo je povinné'}
+        formHook={formHook}
+        label={'Heslo'}
+        name={'password'}
+        type={'password'}
+      />
+
+      <Button busy={loading} type={'submit'}>
+        Přihlásit se
+      </Button>
+    </Form>
+  )
 }
 
-export default LoginForm;
+export default LoginForm

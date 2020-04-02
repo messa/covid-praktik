@@ -1,20 +1,20 @@
 @import '~Sass/_helpers.scss';
 
 .button {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 .grid {
-    @include media(tablet) {
-        display: flex;
+  @include media(tablet) {
+    display: flex;
 
-        & > div {
-            flex-grow: 1;
-        }
+    & > div {
+      flex-grow: 1;
     }
+  }
 }
 .table {
-    max-width: 350px;
+  max-width: 350px;
 }
 .wrapper {
-    margin-bottom: 100px;
+  margin-bottom: 100px;
 }

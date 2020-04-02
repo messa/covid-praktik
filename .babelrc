@@ -23,10 +23,7 @@
           "next/babel",
           {
             "targets": {
-              "browsers": [
-                "chrome >= 55",
-                "ff >= 57"
-              ]
+              "browsers": ["chrome >= 55", "ff >= 57"]
             }
           }
         ]

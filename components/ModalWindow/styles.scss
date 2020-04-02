@@ -1,55 +1,55 @@
 @import '~Sass/_helpers.scss';
 
 .overlay {
-    display: flex;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 99;
-    overflow-y: auto;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+  overflow-y: auto;
 
-    @include media(tablet) {
-        padding-top: 50px;
-    }
+  @include media(tablet) {
+    padding-top: 50px;
+  }
 }
 .content {
-    background-color: $white;
-    padding: 50px 15px;
-    width: 100%;
-    margin: auto;
-    position: relative;
+  background-color: $white;
+  padding: 50px 15px;
+  width: 100%;
+  margin: auto;
+  position: relative;
+
+  &.mobileFullHeight {
+    height: 100%;
+  }
+
+  @include media(tablet) {
+    min-width: 450px;
+    padding: 60px;
+    width: auto;
 
     &.mobileFullHeight {
-        height: 100%;
+      height: auto;
     }
-
-    @include media(tablet) {
-        min-width: 450px;
-        padding: 60px;
-        width: auto;
-
-        &.mobileFullHeight {
-            height: auto;
-        }
-    }
+  }
 }
 .closeButton {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  cursor: pointer;
 
-    svg {
-        fill: $tundora;
-    }
+  svg {
+    fill: $tundora;
+  }
 
-    @include media(tablet) {
-        top: 26px;
-        right: 26px;
-    }
+  @include media(tablet) {
+    top: 26px;
+    right: 26px;
+  }
 }

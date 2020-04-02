@@ -1,17 +1,17 @@
 @import '~Sass/_helpers.scss';
 
 .wrapper {
-    margin: 20px 0;
-    text-align: center;
+  margin: 20px 0;
+  text-align: center;
 
-    img {
-        width: 80px;
-    }
+  img {
+    width: 80px;
+  }
 
-    @include media(desktop-lg) {
-        left: 20px;
-        position: absolute;
-        top: 0;
-        width: 100px;
-    }
+  @include media(desktop-lg) {
+    left: 20px;
+    position: absolute;
+    top: 0;
+    width: 100px;
+  }
 }

@@ -1,19 +1,19 @@
 @import '~Sass/_helpers.scss';
 
 .logout {
-    @include media(tablet) {
-        float: right;
-    }
+  @include media(tablet) {
+    float: right;
+  }
 }
 .wrapper {
-    margin-bottom: 40px;
-    text-align: center;
-    overflow: hidden;
+  margin-bottom: 40px;
+  text-align: center;
+  overflow: hidden;
 
-    @include media(tablet) {
-        margin-bottom: 0;
-        text-align: left;
-        float: right;
-        margin-left: 50px;
-    }
+  @include media(tablet) {
+    margin-bottom: 0;
+    text-align: left;
+    float: right;
+    margin-left: 50px;
+  }
 }

@@ -1,23 +1,23 @@
 @import '~Sass/_helpers.scss';
 
 .button {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 .currentSupplies {
-    margin-bottom: 50px;
-    max-width: 500px;
+  margin-bottom: 50px;
+  max-width: 500px;
 }
 .icon {
-    @include square(16px);
-    vertical-align: middle;
+  @include square(16px);
+  vertical-align: middle;
 
-    &.down {
-        fill: $wild-strawberry;
-    }
-    &.up {
-        fill: $mountain-meadow;
-    }
+  &.down {
+    fill: $wild-strawberry;
+  }
+  &.up {
+    fill: $mountain-meadow;
+  }
 }
 .table td > span + span {
-    margin-left: 10px;
+  margin-left: 10px;
 }

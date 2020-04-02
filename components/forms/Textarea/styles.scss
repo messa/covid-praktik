@@ -1,52 +1,52 @@
-@import "~Sass/_helpers.scss";
+@import '~Sass/_helpers.scss';
 
 $height: 40px;
 
 .container {
-    border: 1px solid transparent;
-    position: relative;
-    text-align: left;
-    transition: border .2s linear;
+  border: 1px solid transparent;
+  position: relative;
+  text-align: left;
+  transition: border 0.2s linear;
 }
 .wrapper {
-    margin: 0 0 15px;
+  margin: 0 0 15px;
 
-    &.error {
-        input {
-            border-color: $wild-strawberry;
-        }
+  &.error {
+    input {
+      border-color: $wild-strawberry;
     }
+  }
 
-    textarea {
-        border: 1px solid $silver;
-        border-radius: 0;
-        box-sizing: border-box;
-        font-size: $font-size;
-        height: 50px;
-        line-height: 1.2em;
-        min-height: 100px;
-        outline: none;
-        padding: 10px;
-        width: 100%;
+  textarea {
+    border: 1px solid $silver;
+    border-radius: 0;
+    box-sizing: border-box;
+    font-size: $font-size;
+    height: 50px;
+    line-height: 1.2em;
+    min-height: 100px;
+    outline: none;
+    padding: 10px;
+    width: 100%;
 
-        &[type=checkbox] {
-            @include square(auto);
-            margin-right: 10px;
-            vertical-align: text-top;
-        }
-        &:focus {
-            border-color: $tundora;
-        }
+    &[type='checkbox'] {
+      @include square(auto);
+      margin-right: 10px;
+      vertical-align: text-top;
     }
-    label {
-        display: block;
-        font-size: 14px;
-        line-height: 20px;
+    &:focus {
+      border-color: $tundora;
     }
+  }
+  label {
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+  }
 
-    @include media(tablet) {
-        input {
-            height: 40px;
-        }
+  @include media(tablet) {
+    input {
+      height: 40px;
     }
+  }
 }

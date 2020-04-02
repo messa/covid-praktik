@@ -1,44 +1,48 @@
-import React, {useRef} from 'react';
-import classNames from 'classnames';
+import React, { useRef } from 'react'
+import classNames from 'classnames'
 
-import styles from './styles.scss';
+import styles from './styles.scss'
 
-export default function Form({className = '', onSubmit, children, formHook}) {
-    const formRef = useRef();
+export default function Form({ className = '', onSubmit, children, formHook }) {
+  const formRef = useRef()
 
-    function submitForm(e) {
-        e.preventDefault();
+  function submitForm(e) {
+    e.preventDefault()
 
-        if (formHook) {
-            const {values, handleValidate} = formHook;
+    if (formHook) {
+      const { values, handleValidate } = formHook
 
-            let hasError = false;
+      let hasError = false
 
-            Object.keys(values).forEach((name) => {
-                if (!handleValidate(name, values[name]) && !hasError) {
-                    hasError = true;
-                    const elm = document.getElementById(name);
-                    if (elm) {
-                        elm.scrollIntoView({
-                            behavior: 'smooth',
-                        })
-                    } else {
-                        console.error('missing element with id:', name);
-                    }
-                }
-            });
-
-            if (hasError) {
-                return;
-            }
+      Object.keys(values).forEach(name => {
+        if (!handleValidate(name, values[name]) && !hasError) {
+          hasError = true
+          const elm = document.getElementById(name)
+          if (elm) {
+            elm.scrollIntoView({
+              behavior: 'smooth',
+            })
+          } else {
+            console.error('missing element with id:', name)
+          }
         }
+      })
 
-        typeof onSubmit === 'function' && onSubmit(e);
+      if (hasError) {
+        return
+      }
     }
 
-    return (
-        <form ref={formRef} className={classNames(styles.form, className)} onSubmit={submitForm}>
-            {children}
-        </form>
-    )
+    typeof onSubmit === 'function' && onSubmit(e)
+  }
+
+  return (
+    <form
+      ref={formRef}
+      className={classNames(styles.form, className)}
+      onSubmit={submitForm}
+    >
+      {children}
+    </form>
+  )
 }

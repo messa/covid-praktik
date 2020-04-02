@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react'
 
 /**
  * @param {Object} initialValues - form elements in pairs of 'name'=>'initial value'
@@ -6,40 +6,45 @@ import {useState} from 'react';
  * @return {{validateAll: Function, handleChange: Function, values: Object, handleValidate: Function, errors: Object}}
  */
 export default function useForm(initialValues, validations = {}) {
-    const [values, setValues] = useState(initialValues);
-    const [errors, setErrors] = useState(Object.keys(initialValues).reduce((res, key) => {
-        res[key] = false;
+  const [values, setValues] = useState(initialValues)
+  const [errors, setErrors] = useState(
+    Object.keys(initialValues).reduce((res, key) => {
+      res[key] = false
 
-        return res;
-    }, {}));
+      return res
+    }, {})
+  )
 
-    const handleChange = (name, value) => setValues(values => ({...values, [name]: value}));
+  const handleChange = (name, value) =>
+    setValues(values => ({ ...values, [name]: value }))
 
-    const handleValidate = (name, value) => {
-        const isValid = typeof validations[name] !== 'function' || validations[name](value, values);
+  const handleValidate = (name, value) => {
+    const isValid =
+      typeof validations[name] !== 'function' ||
+      validations[name](value, values)
 
-        setErrors(errors => ({...errors, [name]: !isValid}));
+    setErrors(errors => ({ ...errors, [name]: !isValid }))
 
-        return isValid;
-    };
+    return isValid
+  }
 
-    const validateAll = () => {
-        let isValid = true;
+  const validateAll = () => {
+    let isValid = true
 
-        Object.keys(initialValues).forEach((name) => {
-            if (!handleValidate(name, values[name])) {
-                isValid = false;
-            }
-        });
+    Object.keys(initialValues).forEach(name => {
+      if (!handleValidate(name, values[name])) {
+        isValid = false
+      }
+    })
 
-        return isValid;
-    };
+    return isValid
+  }
 
-    return {
-        values,
-        errors,
-        handleChange,
-        handleValidate,
-        validateAll,
-    };
+  return {
+    values,
+    errors,
+    handleChange,
+    handleValidate,
+    validateAll,
+  }
 }
