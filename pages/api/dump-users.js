@@ -15,9 +15,9 @@ export default withUser(async function(req, res) {
     const data = allUsers.map(user => ({
       id: user._id,
       emailAddress: user.emailAddress,
-      createDate: user.createDate,
+      createDate: formatDate(user.createDate),
       officeId: user.officeId,
-      lastLoginDate: user.lastLoginDate,
+      lastLoginDate: formatDate(user.lastLoginDate),
       isAdmin: user.isAdmin,
     }))
     if (format === 'json') {
@@ -32,3 +32,7 @@ export default withUser(async function(req, res) {
     return res.status(500).json({ error: `Dump failed: ${err}` })
   }
 })
+
+function formatDate(dt) {
+  return dt.toISOString ? dt.toISOString() : dt
+}

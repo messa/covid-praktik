@@ -26,7 +26,7 @@ export default withUser(async function(req, res) {
           street: office.street,
           city: office.city,
           postalCode: office.postalCode,
-          createDate: office.createDate,
+          createDate: formatDate(office.createDate),
           currentOfficeState: office.currentOfficeState,
           description: office.description,
           userId: users && users[0] ? users[0].id : null,
@@ -62,3 +62,7 @@ export default withUser(async function(req, res) {
     return res.status(500).json({ error: `Dump failed: ${err}` })
   }
 })
+
+function formatDate(dt) {
+  return dt.toISOString ? dt.toISOString() : dt
+}
