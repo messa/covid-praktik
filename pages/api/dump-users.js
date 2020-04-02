@@ -1,3 +1,4 @@
+import csvStringify from 'csv-stringify'
 import { withUser } from '../../lib/decorators'
 import { listAllUsers } from '../../lib/model'
 
@@ -21,6 +22,9 @@ export default withUser(async function(req, res) {
     }))
     if (format === 'json') {
       return res.status(200).json(data)
+    } else if (format === 'csv') {
+      res.setHeader('Content-Type', 'text/plain')
+      return res.status(200).send(csvStringify(data, { header: true }))
     } else {
       return res.status(400).json({ error: 'Invalid format' })
     }
