@@ -1,7 +1,7 @@
 import { withSession } from '../../lib/decorators'
 import { getUserByEmailAndPassword } from '../../lib/model/users'
 
-export default withSession(async function (req, res) {
+export default withSession(async function(req, res) {
   const user = await getUserByEmailAndPassword({
     emailAddress: req.body.emailAddress,
     password: req.body.password,

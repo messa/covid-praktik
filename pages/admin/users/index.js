@@ -1,30 +1,43 @@
-import {useState} from 'react';
-import Link from 'next/link';
-import { getSession, getUserById, getOfficeById, listAllUsers } from '../../../lib/model'
+import { useState } from 'react'
+import Link from 'next/link'
+import {
+  getSession,
+  getUserById,
+  getOfficeById,
+  listAllUsers,
+} from '../../../lib/model'
 
 function UserAdminPage({ user, userList }) {
   if (!user) {
     return (
       <div>
-        <p>Prosím, <Link href='/'><a>přihlašte se</a></Link>.</p>
+        <p>
+          Prosím,{' '}
+          <Link href="/">
+            <a>přihlašte se</a>
+          </Link>
+          .
+        </p>
       </div>
     )
   }
   if (!user.isAdmin) {
-    return (
-      <p>Bohužel nemáte oprávnění pro vstup do administrace.</p>
-    )
+    return <p>Bohužel nemáte oprávnění pro vstup do administrace.</p>
   }
   return (
     <div>
-
-        <p style={{ textAlign: 'right' }}>
-            Přihlášený uživatel: {user.emailAddress}
-            {user.isAdmin && (
-                <>{' '}<Link href='/admin'><a>Administrace</a></Link></>
-            )}
-            {' '}<a href='/api/logout-and-redirect'>Odhlásit</a>
-        </p>
+      <p style={{ textAlign: 'right' }}>
+        Přihlášený uživatel: {user.emailAddress}
+        {user.isAdmin && (
+          <>
+            {' '}
+            <Link href="/admin">
+              <a>Administrace</a>
+            </Link>
+          </>
+        )}{' '}
+        <a href="/api/logout-and-redirect">Odhlásit</a>
+      </p>
 
       <h1>Přehled uživatelů</h1>
 
@@ -39,14 +52,19 @@ function UserAdminPage({ user, userList }) {
         <tbody>
           {userList.map(u => (
             <tr key={u.id}>
-              <td><Link href='/admin/users/[userId]' as={`/admin/users/${u.id}`}><a><code>{u.id}</code></a></Link></td>
+              <td>
+                <Link href="/admin/users/[userId]" as={`/admin/users/${u.id}`}>
+                  <a>
+                    <code>{u.id}</code>
+                  </a>
+                </Link>
+              </td>
               <td>{u.emailAddress}</td>
               <td>{u.isAdmin && 'Administrátor'}</td>
             </tr>
           ))}
         </tbody>
       </table>
-
     </div>
   )
 }
@@ -58,7 +76,7 @@ export async function getServerSideProps({ req, res }) {
     return {
       props: {
         user: null,
-      }
+      },
     }
   }
   if (!user.isAdmin) {
@@ -73,7 +91,7 @@ export async function getServerSideProps({ req, res }) {
           id: office._id,
           name: office.name,
         },
-      }
+      },
     }
   }
   const office = await getOfficeById(user.officeId)
@@ -97,6 +115,5 @@ export async function getServerSideProps({ req, res }) {
     },
   }
 }
-
 
 export default UserAdminPage

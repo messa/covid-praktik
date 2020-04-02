@@ -1,30 +1,43 @@
-import {useState} from 'react';
-import Link from 'next/link';
-import { getSession, getUserById, getOfficeById, listAllOffices } from '../../../lib/model'
+import { useState } from 'react'
+import Link from 'next/link'
+import {
+  getSession,
+  getUserById,
+  getOfficeById,
+  listAllOffices,
+} from '../../../lib/model'
 
 function UserAdminPage({ user, officeList }) {
   if (!user) {
     return (
       <div>
-        <p>Prosím, <Link href='/'><a>přihlašte se</a></Link>.</p>
+        <p>
+          Prosím,{' '}
+          <Link href="/">
+            <a>přihlašte se</a>
+          </Link>
+          .
+        </p>
       </div>
     )
   }
   if (!user.isAdmin) {
-    return (
-      <p>Bohužel nemáte oprávnění pro vstup do administrace.</p>
-    )
+    return <p>Bohužel nemáte oprávnění pro vstup do administrace.</p>
   }
   return (
     <div>
-
-        <p style={{ textAlign: 'right' }}>
-            Přihlášený uživatel: {user.emailAddress}
-            {user.isAdmin && (
-                <>{' '}<Link href='/admin'><a>Administrace</a></Link></>
-            )}
-            {' '}<a href='/api/logout-and-redirect'>Odhlásit</a>
-        </p>
+      <p style={{ textAlign: 'right' }}>
+        Přihlášený uživatel: {user.emailAddress}
+        {user.isAdmin && (
+          <>
+            {' '}
+            <Link href="/admin">
+              <a>Administrace</a>
+            </Link>
+          </>
+        )}{' '}
+        <a href="/api/logout-and-redirect">Odhlásit</a>
+      </p>
 
       <h1>Přehled ordinací</h1>
 
@@ -38,13 +51,21 @@ function UserAdminPage({ user, officeList }) {
         <tbody>
           {officeList.map(office => (
             <tr key={office.id}>
-              <td><Link href='/admin/offices/[officeId]' as={`/admin/offices/${office.id}`}><a><code>{office.id}</code></a></Link></td>
+              <td>
+                <Link
+                  href="/admin/offices/[officeId]"
+                  as={`/admin/offices/${office.id}`}
+                >
+                  <a>
+                    <code>{office.id}</code>
+                  </a>
+                </Link>
+              </td>
               <td>{office.name}</td>
             </tr>
           ))}
         </tbody>
       </table>
-
     </div>
   )
 }
@@ -56,7 +77,7 @@ export async function getServerSideProps({ req, res }) {
     return {
       props: {
         user: null,
-      }
+      },
     }
   }
   if (!user.isAdmin) {
@@ -71,7 +92,7 @@ export async function getServerSideProps({ req, res }) {
           id: office._id,
           name: office.name,
         },
-      }
+      },
     }
   }
   const office = await getOfficeById(user.officeId)
@@ -94,6 +115,5 @@ export async function getServerSideProps({ req, res }) {
     },
   }
 }
-
 
 export default UserAdminPage

@@ -1,1 +1,1 @@
-export default 'Evidence vybavení ordinací';
+export default 'Evidence vybavení ordinací'
