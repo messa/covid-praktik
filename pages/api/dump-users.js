@@ -34,5 +34,5 @@ export default withUser(async function(req, res) {
 })
 
 function formatDate(dt) {
-  return dt.toISOString ? dt.toISOString() : dt
+  return dt && dt.toISOString ? dt.toISOString() : dt
 }
