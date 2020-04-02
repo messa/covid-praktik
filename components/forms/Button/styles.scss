@@ -1,5 +1,8 @@
 @import '~Sass/_helpers.scss';
 
+a.button {
+  text-decoration: none;
+}
 .button {
   background-color: $como;
   border: none;

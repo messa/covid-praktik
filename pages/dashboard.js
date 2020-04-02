@@ -10,6 +10,7 @@ import {
 } from '../lib/model'
 
 import Container from 'Components/Container'
+import FooterText from 'Components/FooterText';
 import Logo from 'Components/Logo'
 import NotLoggedIn from 'Components/dashboard/NotLoggedIn'
 import OfficeInfo from 'Components/dashboard/OfficeInfo'
@@ -49,6 +50,7 @@ function Dashboard({ notLoggedIn, user, office, staffState, supplyUpdates }) {
       </Wrapper>
 
       <Wrapper>
+        <FooterText/>
         <StagingEnvNotice />
       </Wrapper>
     </Container>
