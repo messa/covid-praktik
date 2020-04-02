@@ -5,6 +5,8 @@ import { getSession, getUserById } from '../lib/model'
 
 import Button from 'Components/forms/Button'
 import Container from 'Components/Container'
+import FooterText from 'Components/FooterText';
+import Heading from 'Components/Heading'
 import LoginForm from 'Components/LoginForm'
 import Logo from 'Components/Logo'
 import Message from 'Components/Message'
@@ -43,7 +45,17 @@ function IndexPage({ user }) {
           </Message>
         )}
 
-        <h1>Evidence vybavení ordinací</h1>
+        <div>
+          <p>
+            <strong>
+              <small>
+                www.covid-praktik.cz<br/>
+                CEP COVID 2020
+              </small>
+            </strong>
+          </p>
+          <Heading level={1} text={'Evidence vybavení ordinací'}/>
+        </div>
 
         <p style={{ marginBottom: 60 }}>
           Pokud nemáte vytvořený účet,{' '}
@@ -53,6 +65,8 @@ function IndexPage({ user }) {
         </p>
 
         <LoginForm />
+
+        <FooterText/>
 
         <StagingEnvNotice />
       </Wrapper>

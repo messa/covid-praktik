@@ -7,9 +7,12 @@ html {
   scroll-behavior: smooth;
 }
 a {
-  color: $regent-gray;
+  color: $como;
   font-weight: 700;
-  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 body {
   color: $black;
