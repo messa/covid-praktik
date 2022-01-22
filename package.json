@@ -27,7 +27,7 @@
     "cookie": "^0.4.0",
     "csv-stringify": "^5.3.6",
     "mongoose": "^5.9.7",
-    "nanoid": "^2.1.11",
+    "nanoid": "^3.1.31",
     "next": "^9.3.4",
     "nprogress": "^0.2.0",
     "react": "^16.13.1",
