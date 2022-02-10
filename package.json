@@ -40,7 +40,7 @@
     "@zeit/next-sass": "^1.0.1",
     "babel-loader": "^8.1.0",
     "cross-env": "6.0.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react-svg-loader": "^3.0.3"
   }
 }
